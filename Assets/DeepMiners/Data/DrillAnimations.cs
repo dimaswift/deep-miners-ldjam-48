@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace DeepMiners.Data
 {
-    public struct VerticalVelocity : IComponentData
+    public struct DrillAnimations : IComponentData
     {
-        public float Value;
+        public BlobAssetReference<KeyframeBlobArray> Bounce;
     }
 }

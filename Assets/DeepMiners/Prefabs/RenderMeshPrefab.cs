@@ -1,8 +1,10 @@
-﻿using Unity.Rendering;
+﻿using Unity.Collections;
+using Unity.Rendering;
 using UnityEngine;
 
 namespace DeepMiners.Prefabs
 {
+
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(MeshFilter))]
     public class RenderMeshPrefab : MonoBehaviour

@@ -6,5 +6,6 @@ namespace DeepMiners.Config
     public class DrillConfig : ScriptableObject
     {
         public WorkerConfig[] workers;
+        public AnimationCurve drillBounceCurve;
     }
 }

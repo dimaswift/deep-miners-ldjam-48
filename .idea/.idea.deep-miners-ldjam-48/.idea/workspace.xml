@@ -2,33 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b4c7971-2fe4-4fff-9b19-be3a3d0df8f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockColor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockColor.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Jobs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Jobs/DestroyBlockJob.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Jobs/DestroyBlockJob.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Jobs/FindBlockJob.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Jobs/FindBlockJob.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockDestination.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockDestination.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationIndex.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationIndex.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationPoint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationPoint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillAnimations.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillAnimations.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillPower.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillPower.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/IgnoreGravity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/IgnoreGravity.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/KeyframeBlobArray.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/KeyframeBlobArray.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalLimit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalLimit.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/GravitySystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/GravitySystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Utils/CurveUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Utils/CurveUtil.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultBlockGroup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/DefaultBlockGroup.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultShaft.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultShaft.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockGroupVisualOrigin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockGroupVisualOrigin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/MoveSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/MoveSpeed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultBlockGroup.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultBlockGroup.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultWorkerFactory.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/DefaultWorkerFactory.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Config/DrillConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Config/DrillConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Prefabs/RenderMeshPrefab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Prefabs/RenderMeshPrefab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockMoveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockMoveSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,24 +61,23 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/220F2AAB-ED1D-4738-94A8-8B65AAF6C105/41/216054e9/Nullable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/220F2AAB-ED1D-4738-94A8-8B65AAF6C105/3b/72e9fd40/Void.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/ComponentSystemGroup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.1/Unity.Mathematics/int3.gen.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/EntityComponentStoreDebug.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/CodeGeneratedJobForEach/LambdaJobDescription.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections/NativeHashMap.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/SystemBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.7/Runtime/Events/MarkerList.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/IJobChunk.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/220F2AAB-ED1D-4738-94A8-8B65AAF6C105/41/216054e9/Nullable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/Types/TypeManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/Blobs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/ComponentSystemGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/EntityCommandBufferSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.2.1/Unity.Mathematics/int3.gen.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collections@0.15.0-preview.21/Unity.Collections/NativeHashMap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/CodeGeneratedJobForEach/LambdaJobDescription.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/EntityComponentStoreDebug.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/SceneComponents/CameraController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Scene/CameraController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Core/Ore.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Prefabs/RenderMeshPrefab.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utils/MeshUtil.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Factories/OreFactory.cs" />
@@ -81,30 +94,41 @@
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Ore.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/ShaftSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/MineSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockPoint.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/DrillConfig.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockConfig.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/ConfigurableSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockType.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockGroupConfig.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockMoveSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockSelection.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Prefabs/RenderMeshPrefab.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Jobs/FindBlockJob.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Jobs/DestroyBlockJob.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockGroupVisualOrigin.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/MoveSpeed.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DestroyBlock.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockDestination.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationIndex.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockPoint.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillSpeed.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Prefabs/RenderMeshPrefab.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalLimit.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/GravitySystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/NativeCurve.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/DrillConfig.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlobAssetUtils.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillAnimations.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/CurveUtil.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1rayeSEf7iqr5bGA6uKPMjLibP3" />
@@ -157,7 +181,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619228590948</updated>
-      <workItem from="1619228594620" duration="33918000" />
+      <workItem from="1619228594620" duration="40852000" />
+      <workItem from="1619288820946" duration="5808000" />
     </task>
     <servers />
   </component>
@@ -176,6 +201,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

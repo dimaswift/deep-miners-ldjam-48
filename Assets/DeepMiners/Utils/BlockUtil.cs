@@ -1,7 +1,7 @@
-﻿using Unity.Collections;
+﻿using DeepMiners.Data;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace DeepMiners.Utils
 {
@@ -49,8 +49,8 @@ namespace DeepMiners.Utils
             int closest = int.MaxValue;
             for (int i = 0; i < list.Length; i++)
             {
-                var p = list[i];
-                var dist = math.abs(point.x - p.x) + math.abs(point.z - p.z);
+                int3 p = list[i];
+                int dist = math.abs(point.x - p.x) + math.abs(point.z - p.z);
                 if (dist < closest)
                 {
                     closest = dist;
@@ -65,6 +65,15 @@ namespace DeepMiners.Utils
         public static bool HasBlock(int3 position, int2 size, int currentDepth, NativeHashMap<int3, Entity> map)
         {
             return ContainsPoint(position, size, currentDepth) && map[position] != Entity.Null;
+        }
+        
+        public static bool BuildPath(int3 source, int3 destination, NativeHashMap<int3, Entity> map, DynamicBuffer<BlockDestination> path)
+        {
+            path.Clear();
+            
+            
+            
+            return true;
         }
         
         public static bool  ContainsPoint(int3 point, int2 size, int currentDepth)

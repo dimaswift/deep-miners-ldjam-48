@@ -106,6 +106,7 @@ namespace Systems
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
             EntityManager.AddComponentData(entity, new BlockGroupVisualOrigin() { Value = visualOrigin });
             EntityManager.AddComponentData(entity, new VerticalVelocity() { Value = 0 });
+            EntityManager.AddComponentData(entity, new Dent() { Value = 1 });
             RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)type]);
             
             return entity;

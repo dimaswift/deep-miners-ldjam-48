@@ -6,5 +6,6 @@ namespace DeepMiners.Data
     {
         public Entity CurrentBlock;
         public WorkerType Type;
+        public float LastDentTime;
     }
 }

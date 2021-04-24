@@ -4,6 +4,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Systems
 {
@@ -12,9 +13,11 @@ namespace Systems
         private float size;
 
         private BlockGroupSystem groupSystem;
+        private EntityCommandBufferSystem commandBufferSystem;
 
         protected override async void OnCreate()
-        { 
+        {
+            commandBufferSystem = World.GetOrCreateSystem<EntityCommandBufferSystem>();
             groupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
 
             while (groupSystem.IsReady == false)
@@ -39,21 +42,24 @@ namespace Systems
             int depth = groupSystem.CurrentDepth;
             NativeHashMap<int3, Entity> map = groupSystem.BlocksMap;
             ComponentDataFromEntity<Dent> dentMap = GetComponentDataFromEntity<Dent>();
-            
+
+            EntityCommandBuffer buffer = commandBufferSystem.CreateCommandBuffer();
+
             Dependency = Entities.WithReadOnly(dentMap).WithReadOnly(map).ForEach((Entity entity, 
                 BlockGroupVisualOrigin origin, 
-                MoveSpeed speed, 
-                BlockPoint point, 
-                ref VerticalVelocity velocity, 
+                MoveSpeed speed,
+                DestinationPoint destination,
                 ref Translation translation) =>
             {
-                float3 finalPos = origin.Value + new float3(point.Value.x, translation.Value.y, point.Value.z) * s;
+
+                int3 point = destination.Value;
+                float3 finalPos = origin.Value + new float3(point.x, translation.Value.y, point.z) * s;
 
                 float y = translation.Value.y;
-                var bottom = new int3(point.Value.x, point.Value.y + 1, point.Value.z);
+                var bottom = new int3(point.x, point.y + 1, point.z);
 
                 while (bottom.y < depth)
-                {
+                { 
                     if (map.ContainsKey(bottom))
                     {
                         Entity block = map[bottom];
@@ -73,23 +79,31 @@ namespace Systems
                     }
                     bottom.y++;
                 }
-                
+            
                 finalPos.y = y + 1;
 
-                if (translation.Value.y > finalPos.y)
+                buffer.SetComponent(entity, new VerticalLimit() { Value = finalPos.y } );
+
+                float actualSpeed = speed.Value;
+                
+                float xzDist = math.distance(new float2(translation.Value.x, translation.Value.z),
+                    new float2(finalPos.x, finalPos.z));
+
+                if (xzDist > 0 && xzDist < s)
                 {
-                    velocity.Value += dt * 10;
-                }
-                else
-                {
-                    velocity.Value = 0;
+                    actualSpeed *= xzDist;
                 }
 
-                finalPos.y = translation.Value.y + dt * velocity.Value;
-                
-                translation.Value = math.lerp(translation.Value, finalPos, dt * speed.Value);
+                float3 interpolated = Vector3.MoveTowards(translation.Value, finalPos, dt * actualSpeed);
+
+                interpolated.y = translation.Value.y;
+
+                translation.Value = interpolated;
+            
 
             }).Schedule(Dependency);
+            
+            commandBufferSystem.AddJobHandleForProducer(Dependency);
             
         }
     }

@@ -24,7 +24,7 @@ MonoBehaviour:
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 65c3e97451c86dc4bafe4caa9cbc77d1
-    m_Address: configs/workerFactory
+    m_Address: configs/drill
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
