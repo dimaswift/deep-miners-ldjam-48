@@ -6,4 +6,9 @@ namespace DeepMiners.Data
     {
         public float Value;
     }
+    
+    public struct Dent : IComponentData
+    {
+        public float Value;
+    }
 }

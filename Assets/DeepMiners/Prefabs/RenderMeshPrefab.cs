@@ -28,7 +28,7 @@ namespace DeepMiners.Prefabs
                 },
                 FlipWinding = flipTriangles,
                 RenderingLayerMask = meshRenderer.renderingLayerMask
-            };
+            }; 
         }
     }
 }

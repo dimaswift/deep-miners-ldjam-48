@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: DefaultMine
   m_EditorClassIdentifier: 
   initialDepth: 10
+  maxDepth: 1024
   size:
     x: 10
     y: 100
-  ores:
+  blocks:
   - {fileID: 11400000, guid: 6219a49253d698042979d071880dc4da, type: 2}
   - {fileID: 11400000, guid: 999da3364d7c57344869b6e68f21e9ae, type: 2}
   - {fileID: 11400000, guid: 27e3e346a15d9f54fbd0f1261dca1255, type: 2}

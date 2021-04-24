@@ -6,6 +6,6 @@
         Stone = 1,
         Iron = 2,
         
-        OresAmount = 3
+        BlocksAmount = 3
     }
 }
