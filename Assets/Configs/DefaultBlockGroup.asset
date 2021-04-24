@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3557f789fbe64298b7edb959b6f87cf6, type: 3}
   m_Name: DefaultMine
   m_EditorClassIdentifier: 
+  blockSize: 1
   initialDepth: 10
   maxDepth: 1024
   size:
     x: 10
-    y: 100
+    y: 10
   blocks:
   - {fileID: 11400000, guid: 6219a49253d698042979d071880dc4da, type: 2}
   - {fileID: 11400000, guid: 999da3364d7c57344869b6e68f21e9ae, type: 2}

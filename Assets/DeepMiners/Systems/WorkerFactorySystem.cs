@@ -17,14 +17,14 @@ namespace Systems
         
         protected override async void OnCreate()
         {
-            config = await Addressables.LoadAssetAsync<DrillConfig>("configs/shaft").Task;
+            config = await Addressables.LoadAssetAsync<DrillConfig>("configs/workerFactory").Task;
             await LoadConfigs(config.workers);
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             await Task.Yield();
             Entity worker = CreateWorker(WorkerType.ShovelDigger, new int3(5, 0, 5));
             await Task.Delay(1000);
             
-            EntityManager.SetComponentData(worker, new BlockPoint() {Value = new int3(9,0,9)});
+         //  EntityManager.SetComponentData(worker, new BlockPoint() {Value = new int3(9,0,9)}); 
         }
 
         protected override void OnUpdate()

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac32570e259747a3a91bba0819908dff, type: 3}
-  m_Name: DefaultShaft
+  m_Name: DefaultWorkerFactory
   m_EditorClassIdentifier: 
   workers:
   - {fileID: 11400000, guid: ebd2160d822ebdf4f863158dc88035d7, type: 2}

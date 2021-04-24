@@ -7,4 +7,5 @@ namespace DeepMiners.Data
     {
         public float3 Value;
     }
+    
 }

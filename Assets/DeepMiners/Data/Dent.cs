@@ -2,7 +2,7 @@
 
 namespace DeepMiners.Data
 {
-    public struct MoveSpeed : IComponentData
+    public struct Dent : IComponentData
     {
         public float Value;
     }

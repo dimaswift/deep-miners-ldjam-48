@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using DeepMiners.Config;
 using DeepMiners.Data;
+using DeepMiners.Jobs;
+using DeepMiners.Utils;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -17,6 +20,11 @@ namespace Systems
     public class BlockGroupSystem : ConfigurableSystem<BlockConfig>
     {
         public float BlockSize => config.blockSize;
+
+        public int CurrentDepth => currentDepth;
+        public int2 GroupSize => config.size;
+        
+        public bool IsReady { get; private set; }
         public NativeHashMap<int3, Entity> BlocksMap => blocksMap;
         public float3 VisualOrigin => visualOrigin;
         
@@ -27,28 +35,28 @@ namespace Systems
         private NativeHashMap<int3, Entity> blocksMap;
         private int2 size;
 
+        public JobHandle? ModificationJob;
+        
         private int currentDepth;
         
         protected override async void OnCreate()
         {
-            cam = Camera.main;
             config = await Addressables.LoadAssetAsync<BlockGroupConfig>("configs/defaultBlockGroup").Task;
             size = config.size;
             blocksMap = new NativeHashMap<int3, Entity>(config.maxDepth * config.size.x * config.size.x,
                 Allocator.Persistent);
             await LoadConfigs(config.blocks);
             AddGroup(config.initialDepth);
-           
+
+            while (cam == null)
+            {
+                await Task.Yield();
+            }
+            
+            IsReady = true;
         }
 
-        public bool ContainsPoint(int3 point)
-        {
-            if (point.x < 0 || point.y < 0 || point.z < 0)
-            {
-                return false;
-            }
-            return point.x < size.x && point.z < size.x && point.y < currentDepth;
-        }
+        public bool ContainsPoint(int3 point) => BlockUtil.ContainsPoint(point, size, currentDepth);
 
         public float3 ToWorldPoint(int3 blockPoint) =>
             visualOrigin + new float3(blockPoint.x, -blockPoint.y, blockPoint.z) * config.blockSize;
@@ -97,6 +105,7 @@ namespace Systems
             EntityManager.AddComponentData(entity, new Block() { Type = type });
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
             EntityManager.AddComponentData(entity, new BlockGroupVisualOrigin() { Value = visualOrigin });
+            EntityManager.AddComponentData(entity, new VerticalVelocity() { Value = 0 });
             RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)type]);
             
             return entity;
@@ -111,7 +120,39 @@ namespace Systems
 
         public bool HasBlock(int3 position)
         {
-            return ContainsPoint(position) && blocksMap[position] != Entity.Null;
+            return BlockUtil.HasBlock(position, size, currentDepth, blocksMap);
+        }
+
+        public JobHandle FindBlock(int3 point, out NativeArray<Entity> result, JobHandle deps)
+        {
+            result = new NativeArray<Entity>(1, Allocator.TempJob);
+            return new FindBlockJob()
+            {
+                Point = point,
+                Map = blocksMap,
+                Result = result
+            }.Schedule(deps);
+        }
+
+        public JobHandle WaitForModificationJob(JobHandle deps)
+        {
+            if (ModificationJob.HasValue && ModificationJob.Value.IsCompleted == false)
+            {
+                return JobHandle.CombineDependencies(ModificationJob.Value, deps);
+            }
+
+            return deps;
+        }
+        
+        public JobHandle DestroyBlock(int3 point, JobHandle deps)
+        {
+            ModificationJob = new DestroyBlockJob()
+            {
+                Point = point,
+                Map = blocksMap,
+            }.Schedule(deps);
+
+            return ModificationJob.Value;
         }
         
         private void AddGroup(int depth)
@@ -125,7 +166,7 @@ namespace Systems
                         var point = new int3(x, level, z);
                         if (level > 0)
                         {
-                            BlockType type = (BlockType) random.NextInt(1, (int) BlockType.BlocksAmount);
+                            BlockType type = (BlockType) random.NextInt(0, (int) BlockType.BlocksAmount);
                             blocksMap.Add(point, CreateBlock(type, point));
                         }
                         else
@@ -146,6 +187,12 @@ namespace Systems
             {
                 cam = Camera.main;
             }
+
+            if (ModificationJob.HasValue && ModificationJob.Value.IsCompleted)
+            {
+                ModificationJob = null;
+            }
+           
         }
     }
 }

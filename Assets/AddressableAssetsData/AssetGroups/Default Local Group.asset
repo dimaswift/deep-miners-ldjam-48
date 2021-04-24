@@ -18,13 +18,13 @@ MonoBehaviour:
   m_GUID: fef78d7fad37fb44e9d469fb1687aa5b
   m_SerializeEntries:
   - m_GUID: 392a90a55b862a04cb17ecfccca787be
-    m_Address: configs/mine
+    m_Address: configs/defaultBlockGroup
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 65c3e97451c86dc4bafe4caa9cbc77d1
-    m_Address: configs/shaft
+    m_Address: configs/workerFactory
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
