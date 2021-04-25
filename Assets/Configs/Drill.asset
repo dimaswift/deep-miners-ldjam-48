@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Drill
   m_EditorClassIdentifier: 
   workers:
+  - {fileID: 11400000, guid: 8f99d5c6f4d9a0447b9d240e4bf7dfac, type: 2}
   - {fileID: 11400000, guid: ebd2160d822ebdf4f863158dc88035d7, type: 2}
   drillBounceCurve:
     serializedVersion: 2

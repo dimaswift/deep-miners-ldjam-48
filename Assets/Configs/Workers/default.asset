@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a2fd4fa4aa4469ae9ed1993d988924, type: 3}
-  m_Name: ShovelDigger
+  m_Name: default
   m_EditorClassIdentifier: 
-  type: 0
+  displayName: Default
+  ability: 0
   prefab: {fileID: 8699068761829067125, guid: e82a05f7f96944d4ca6eaac34219162b, type: 3}
   power: 0.1
   drillRate: 0.5
   moveSpeed: 5
   size: 1
-  color: {r: 0.061154485, g: 1, b: 0, a: 1}
-  sizeLossPerHit: 0.05
-  radius: 5
+  color: {r: 1, g: 1, b: 1, a: 1}
+  sizeLossPerHit: 0.1
+  radius: 0
   maxConsecutiveHits: 1

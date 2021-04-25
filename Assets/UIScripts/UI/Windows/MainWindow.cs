@@ -14,12 +14,12 @@ namespace DeepMiners.UI
         [SerializeField] private Button quitButton;
         [SerializeField] private TextMeshProUGUI versionText;
         
-        protected override Task OnInit()
+        protected override async Task OnInit()
         {
+            await base.OnInit();
             Bind(sandboxButton, async () => await System.DispatchSandboxClick());
             Bind(quitButton, Application.Quit);
             versionText.text = Application.version;
-            return base.OnInit();
         }
     }
 }

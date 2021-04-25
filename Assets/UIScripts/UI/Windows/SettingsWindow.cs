@@ -12,15 +12,15 @@ namespace DeepMiners.UI
         [SerializeField] private Button quitButton;
 
 
-        protected override Task OnInit()
+        protected override async Task OnInit()
         {
+            await base.OnInit();
             Bind(mainMenuButton, async () =>
             {
                 await Hide();
-                await System.SetCurrentMode(GameMode.None);
+                await System.SetCurrentMode(GameMode.MainMenu);
             });
             Bind(quitButton, Application.Quit);
-            return base.OnInit();
         }
         
         protected override Task OnShown()

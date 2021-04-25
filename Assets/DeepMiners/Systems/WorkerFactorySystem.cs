@@ -1,10 +1,12 @@
-﻿using DeepMiners.Config;
+﻿using System.Collections.Generic;
+using DeepMiners.Config;
 using DeepMiners.Data;
 using DeepMiners.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Random = Unity.Mathematics.Random;
 
@@ -16,7 +18,9 @@ namespace Systems
         private BlockGroupSystem blockGroupSystem;
         private DrillConfig config;
         private BlobAssetReference<KeyframeBlobArray> bounceCurve;
- 
+
+        public WorkerConfig DefaultWorker => config.workers[0];
+        
         protected override async void OnCreate()
         {
             config = await Addressables.LoadAssetAsync<DrillConfig>("configs/drill").Task;
@@ -34,25 +38,28 @@ namespace Systems
         {
             
         }
-        public WorkerConfig GetConfig(WorkerType type) => Configs[(int) type];
-        
-        public Entity CreateWorker(WorkerType type, int2 position)
+
+        public IEnumerable<WorkerConfig> GetWorkersConfigs() => config.workers;
+
+        public Entity CreateWorker(WorkerConfig workerConfig, int2 position)
         {
-            WorkerConfig workerConfig = Configs[(int)type];
-            
             float3 worldPos = blockGroupSystem.VisualOrigin + new float3(position.x, 0, position.y);
 
             Entity block = blockGroupSystem.GetBlock(position);
              
             Entity entity = CreateBaseEntity(worldPos);
+
+            Color color = workerConfig.color;
+            
             EntityManager.AddComponentData(entity, new Worker()
             {
-                Type = type,
+                Ability = workerConfig.ability,
                 CurrentBlock = block,
                 LastHitTime = Time.DeltaTime,
                 SizeLossPerHit = workerConfig.sizeLossPerHit,
                 Radius = workerConfig.radius,
-                MaxConsecutiveHits = workerConfig.maxConsecutiveHits
+                MaxConsecutiveHits = workerConfig.maxConsecutiveHits,
+                Color = new float4(color.r, color.g, color.b, color.a)
             } );
             EntityManager.AddComponentData(entity, new MoveSpeed() { Value = workerConfig.moveSpeed });
             EntityManager.AddComponentData(entity, new DestinationPoint() { Value = position });
@@ -60,9 +67,7 @@ namespace Systems
             EntityManager.AddComponentData(entity, new NonUniformScale() { Value = workerConfig.size });
             EntityManager.AddComponentData(entity, new DrillPower() { Amount = workerConfig.power, Rate = workerConfig.drillRate });
             EntityManager.AddComponentData(entity, new WorkerAnimations() { Bounce = bounceCurve });
-            
-            EntityManager.AddComponentData(entity, new IgnoreGravity());
-            RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)type]);
+            RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)workerConfig.ability]);
             EntityManager.SetComponentData(entity, new Translation() { Value = blockGroupSystem.ToWorldPoint(position, 0) });
             return entity;
         }

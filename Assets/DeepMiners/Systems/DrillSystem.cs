@@ -28,7 +28,8 @@ namespace Systems
             float amount,
             NativeHashMap<int2, Entity> map,
             ComponentDataFromEntity<Depth> depthLookup,
-            WorkerType type)
+            WorkerAbility ability,
+            float4 color)
         {
             if (current.x < size.x && current.y < size.y && current.y >= 0 && current.x >= 0)
             {
@@ -36,7 +37,7 @@ namespace Systems
                 Depth nextDepth = depthLookup[nextBlock];
                 nextDepth.Value += amount;
                 buffer.SetComponent(nextBlock, nextDepth);
-                buffer.AddComponent(nextBlock, new DrillHit() { WorkerType = type, Power = amount });
+                buffer.AddComponent(nextBlock, new DrillHit() { WorkerAbility = ability, Power = amount, Color = color});
             }
         }
         
@@ -115,26 +116,26 @@ namespace Systems
                         scale.Value = new float3(newScale, newScale, newScale);
                         Depth depth = depthLookup[worker.CurrentBlock];
                         depth.Value += power.Amount * math.max(scale.Value.x, 0.25f);
-                        buffer.AddComponent(worker.CurrentBlock, new DrillHit() { WorkerType = worker.Type, Power = power.Amount });
+                        buffer.AddComponent(worker.CurrentBlock, new DrillHit() { WorkerAbility = worker.Ability, Power = power.Amount });
                         int2 center = destination.Value;
                         verticalLimit.Value = -depth.Value;
                         buffer.SetComponent(worker.CurrentBlock, depth);
-                        
+                        float4 color = worker.Color;
                         if (worker.Radius > 0)
                         {
                             float factor = 0.8f;
                             
                             IncreaseDepth(size, new int2(center.x + 1, center.y), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
     
                             IncreaseDepth(size, new int2(center.x - 1, center.y), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x, center.y + 1), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x, center.y - 1), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                
                         }
                         
@@ -143,16 +144,16 @@ namespace Systems
                             float factor = 0.6f;
                             
                             IncreaseDepth(size, new int2(center.x + 1, center.y - 1), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x - 1, center.y - 1), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x + 1, center.y + 1), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x - 1, center.y + 1), buffer, power.Amount * factor, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                         }
                         
                         if (worker.Radius > 2)
@@ -160,16 +161,16 @@ namespace Systems
                             float spread = 0.4f;
                             
                             IncreaseDepth(size, new int2(center.x + 2, center.y), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x, center.y - 2), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x - 2, center.y), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x, center.y + 2), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                         }
                         
                         if (worker.Radius > 3)
@@ -177,28 +178,28 @@ namespace Systems
                             float spread = 0.2f;
                             
                             IncreaseDepth(size, new int2(center.x - 1, center.y + 2), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x - 2, center.y + 1), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x - 2, center.y - 1), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x - 1, center.y - 2), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x + 1, center.y - 2), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x + 2, center.y - 1), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x + 2, center.y + 1), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x + 1, center.y + 2), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                         }
 
                         
@@ -207,16 +208,16 @@ namespace Systems
                             float spread = 0.1f;
                             
                             IncreaseDepth(size, new int2(center.x - 3, center.y), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x + 3, center.y), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
 
                             IncreaseDepth(size, new int2(center.x, center.y - 3), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                             
                             IncreaseDepth(size, new int2(center.x, center.y + 3), buffer, power.Amount * spread, map,
-                                depthLookup, worker.Type);
+                                depthLookup, worker.Ability, color);
                         }
                         
                         verticalLimit.Value = -depth.Value;

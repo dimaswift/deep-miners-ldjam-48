@@ -11,6 +11,14 @@ namespace DeepMiners.UI
 {
     public abstract class Window<T> : Window where T : SystemBase
     {
+        protected override async Task OnInit()
+        {
+            while (System == null)
+            {
+                await Task.Yield();
+            }
+        }
+
         protected T System => World.DefaultGameObjectInjectionWorld.GetExistingSystem<T>();
     }
     

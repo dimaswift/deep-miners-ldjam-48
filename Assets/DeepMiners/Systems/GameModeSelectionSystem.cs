@@ -50,6 +50,7 @@ namespace Systems
         protected override void OnCreate()
         {
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
+            SetCurrentMode(GameMode.MainMenu);
         }
 
         protected override void OnUpdate()

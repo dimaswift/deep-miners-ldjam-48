@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Systems;
+using DeepMiners.Config;
 using DeepMiners.Data;
 using DeepMiners.Systems.Input.Windows;
 using Unity.Entities;
@@ -17,8 +19,12 @@ namespace DeepMiners.Systems.Input
         private bool isReady;
         private double lastWorkerSpawn;
         private double currentSpawnRate = 0.01f;
-
+        
         protected override GameMode Mode => GameMode.Sandbox;
+
+        
+        
+        public WorkerConfig ActiveWorker { get; private set; }
         
         protected override async Task OnActivated()
         {
@@ -27,6 +33,38 @@ namespace DeepMiners.Systems.Input
             isReady = true;
         }
 
+        public async Task UntilReady()
+        {
+            while (isReady == false)
+            {
+                await Task.Yield();
+            }
+        }
+
+        public int2 SelectedBlockSize()
+        {
+            if (blockGroupSystem.GroupSize.x == 0)
+            {
+                return blockGroupSystem.DefaultGroupSize;
+            }
+
+            return blockGroupSystem.DefaultGroupSize;
+        }
+        
+        public IEnumerable<int2> GetAvailableSizes()
+        {
+            yield return new int2(8, 8);
+            yield return new int2(16, 16);
+            yield return new int2(32, 32);
+            yield return new int2(64, 64);
+            yield return new int2(128, 128);
+            yield return new int2(256, 256);
+            yield return new int2(512, 512);
+            yield return new int2(1024, 1024);
+        }
+
+        public IEnumerable<WorkerConfig> GetAvailableWorkers() => workerFactorySystem.GetWorkersConfigs();
+        
         protected override async Task OnWillBeDeactivated()
         {
             await Window.Hide();
@@ -38,7 +76,7 @@ namespace DeepMiners.Systems.Input
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
-           
+            await SetActiveWorker(workerFactorySystem.DefaultWorker);
             while (blockGroupSystem.IsReady == false)
             {
                 await Task.Yield();
@@ -51,6 +89,24 @@ namespace DeepMiners.Systems.Input
             var system = World.GetExistingSystem<BlockGroupSystem>();
             int2 size = system.GroupSize;
             await system.Build(size);
+        }
+
+        public async Task SetSize(int2 size)
+        {
+            if (blockGroupSystem != null && blockGroupSystem.IsReady && size.Equals(blockGroupSystem.GroupSize))
+            {
+                return;  
+            }
+            
+            Window.SetInteractable(false);
+            await blockGroupSystem.Build(size);
+            Window.SetInteractable(true);
+        }
+
+        public Task SetActiveWorker(WorkerConfig config)
+        {
+            ActiveWorker = config;
+            return Task.CompletedTask;
         }
 
         protected override void OnUpdate()
@@ -74,7 +130,7 @@ namespace DeepMiners.Systems.Input
                 if (current.HasValue)
                 {
                     int2 c = current.Value;
-                    workerFactorySystem.CreateWorker(WorkerType.ShovelDigger, c);
+                    workerFactorySystem.CreateWorker(ActiveWorker, c);
                 }
             }
         }

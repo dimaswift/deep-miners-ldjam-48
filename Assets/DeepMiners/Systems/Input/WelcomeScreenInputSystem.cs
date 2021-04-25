@@ -11,7 +11,7 @@ namespace DeepMiners.UI.Systems
     [UpdateInGroup(typeof (LateSimulationSystemGroup), OrderLast = true)]
     public class WelcomeScreenInputSystem : BaseModeSystem<IMainWindow>
     {
-        protected override GameMode Mode => GameMode.None;
+        protected override GameMode Mode => GameMode.MainMenu;
 
         protected override void OnUpdate()
         {
@@ -20,7 +20,6 @@ namespace DeepMiners.UI.Systems
 
         protected override async Task OnActivated()
         {
-            await Task.Delay(1000);
             await Window.Show();
         }
 

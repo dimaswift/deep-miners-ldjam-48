@@ -2,7 +2,7 @@
 {
     public enum GameMode
     {
-        None = 0,
+        MainMenu = 0,
         Sandbox = 1
     }
 }

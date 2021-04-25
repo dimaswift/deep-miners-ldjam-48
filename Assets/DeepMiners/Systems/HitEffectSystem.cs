@@ -57,8 +57,9 @@ namespace Systems
             
             for (int i = 0; i < result.Length; i++)
             {
+                float4 c = hits[i].Color;
                 Entity entity = result[i];
-                Color color = workerFactorySystem.GetConfig(hits[i].WorkerType).color;
+                Color color = new Color(c.x, c.y, c.z, c.w);
                 Entity effect = buffer.CreateEntity();
                 float3 pos = positions[i].Value;
                 pos.y = -dents[i].Value + 0.01f;
