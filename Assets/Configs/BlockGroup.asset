@@ -16,8 +16,8 @@ MonoBehaviour:
   initialDepth: 20
   maxDepth: 1024
   size:
-    x: 32
-    y: 32
+    x: 64
+    y: 64
   blocks:
   - {fileID: 11400000, guid: 6219a49253d698042979d071880dc4da, type: 2}
   - {fileID: 11400000, guid: 999da3364d7c57344869b6e68f21e9ae, type: 2}

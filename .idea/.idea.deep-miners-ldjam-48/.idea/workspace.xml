@@ -2,41 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b4c7971-2fe4-4fff-9b19-be3a3d0df8f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/IsBeingDrilled.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSetup.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockGroupVisualOrigin.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockGroupVisualOrigin.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/IsBeingDrilled.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockSelection.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Depth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Depth.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/DestroyBlock.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/DestroyBlock.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAnimations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillAnimations.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAnimations.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDepthSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDepthSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/BlockGroup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/BlockGroup.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Workers/ShovelDigger.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Workers/ShovelDigger.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Scene.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Scene.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/ConfigurableSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/ConfigurableSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/EffectSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/EffectSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Utils/MeshUtil.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Utils/MeshUtil.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Hit.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Hit.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Stone.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Stone.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,10 +59,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/OreConfig.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Ore.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/ShaftSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/MineSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockType.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockGroupConfig.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockMoveSystem.cs" />
@@ -118,17 +95,21 @@
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAnimations.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerType.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/ConfigurableSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/EffectSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDepthSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraController.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSetup.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1rayeSEf7iqr5bGA6uKPMjLibP3" />

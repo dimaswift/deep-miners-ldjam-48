@@ -112,7 +112,7 @@ namespace Systems
                         float newScale = scale.Value.x - worker.SizeLossPerHit;
                         scale.Value = new float3(newScale, newScale, newScale);
                         Depth depth = depthLookup[worker.CurrentBlock];
-                        depth.Value += power.Amount * scale.Value.x;
+                        depth.Value += power.Amount * math.max(scale.Value.x, 0.25f);
                         buffer.AddComponent(worker.CurrentBlock, new DrillHit() { WorkerType = worker.Type, Power = power.Amount });
                         int2 center = destination.Value;
                         verticalLimit.Value = -depth.Value;
@@ -232,7 +232,7 @@ namespace Systems
                             }
                         }
                                 
-                        if (newScale < 0.1f)
+                        if (newScale <= 0.1f)
                         {
                             buffer.DestroyEntity(entity);
                             buffer.RemoveComponent<IsBeingDrilled>(worker.CurrentBlock); 

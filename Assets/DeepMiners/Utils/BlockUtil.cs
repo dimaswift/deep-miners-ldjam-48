@@ -40,16 +40,16 @@ namespace DeepMiners.Utils
             if (nextRandom == 0)
             {
                 CheckNeighbourBlocks(random, new int2(point.x + 1, point.y), origin, size, map, buffer, filter, checkMap);
-                CheckNeighbourBlocks(random, new int2(point.x, point.y + 1), origin, size, map, buffer, filter, checkMap);
                 CheckNeighbourBlocks(random, new int2(point.x - 1, point.y), origin, size, map, buffer, filter, checkMap);
+                CheckNeighbourBlocks(random, new int2(point.x, point.y + 1), origin, size, map, buffer, filter, checkMap);
                 CheckNeighbourBlocks(random, new int2(point.x, point.y - 1), origin, size, map, buffer, filter, checkMap);
             }
             else
             {
-                CheckNeighbourBlocks(random, new int2(point.x - 1, point.y), origin, size, map, buffer, filter, checkMap);
+                CheckNeighbourBlocks(random, new int2(point.x, point.y + 1), origin, size, map, buffer, filter, checkMap);
                 CheckNeighbourBlocks(random, new int2(point.x, point.y - 1), origin, size, map, buffer, filter, checkMap);
                 CheckNeighbourBlocks(random, new int2(point.x + 1, point.y), origin, size, map, buffer, filter, checkMap);
-                CheckNeighbourBlocks(random, new int2(point.x, point.y + 1), origin, size, map, buffer, filter, checkMap);
+                CheckNeighbourBlocks(random, new int2(point.x - 1, point.y), origin, size, map, buffer, filter, checkMap);
             }
             
             return false;

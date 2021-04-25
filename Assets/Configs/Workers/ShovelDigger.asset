@@ -19,6 +19,6 @@ MonoBehaviour:
   moveSpeed: 5
   size: 1
   color: {r: 0.061154485, g: 1, b: 0, a: 1}
-  sizeLossPerHit: 0.016
+  sizeLossPerHit: 0.05
   radius: 5
-  maxConsecutiveHits: 10
+  maxConsecutiveHits: 1

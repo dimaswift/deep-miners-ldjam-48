@@ -109,7 +109,7 @@ namespace Systems
         {
             float blockSize = config.blockSize;
             Entity entity = CreateBaseEntity(visualOrigin + new float3(position.x, 0, position.y) * blockSize);
-            EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(blockSize, 20, blockSize) });
+            EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(blockSize, 50, blockSize) });
             EntityManager.AddComponentData(entity, new Block() { Type = type });
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
             EntityManager.AddComponentData(entity, new Depth() { Value = 0 });
@@ -125,8 +125,7 @@ namespace Systems
                 for (int z = 0; z < size.y; z++) 
                 {
                     var point = new int2(x, z);
-                    BlockType type = typePool[random.NextInt(0, typePool.Count - 1)];
-                    blocksMap.Add(point, CreateBlock(type, point));
+                    blocksMap.Add(point, CreateBlock(BlockType.Dirt, point));
                 }
             }
         }

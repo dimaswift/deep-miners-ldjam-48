@@ -13,6 +13,8 @@ namespace Systems
         private WorkerFactorySystem workerFactorySystem;
 
         private bool isReady;
+        private double lastWorkerSpawn;
+        private double currentSpawnRate = 0.01f;
         
         protected override async void OnCreate()
         {
@@ -23,7 +25,6 @@ namespace Systems
             {
                 await Task.Yield();
             }
-            
             isReady = true;
         }
         
@@ -34,8 +35,17 @@ namespace Systems
                 return;
             }
 
-            if (Input.GetMouseButtonDown(0))
+           
+            
+            if (Input.GetMouseButton(0))
             {
+                if (Time.ElapsedTime - lastWorkerSpawn < currentSpawnRate)
+                {
+                    return;
+                }
+                
+                lastWorkerSpawn = Time.ElapsedTime;
+
                 int2? current = blockGroupSystem.ScreenToBlockPoint(1);
 
                 if (current.HasValue)
