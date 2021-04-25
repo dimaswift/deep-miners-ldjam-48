@@ -1,39 +1,40 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DeepMiners.Config;
 using DeepMiners.Data;
-using DeepMiners.Jobs;
 using DeepMiners.Utils;
-using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Random = Unity.Mathematics.Random;
 
 namespace Systems
 {
     public class BlockGroupSystem : ConfigurableSystem<BlockConfig>
     {
-        public float BlockSize => config.blockSize;
         
-        public int2 GroupSize => config.size;
+        public event Action OnWillBuild = () => { }; 
+        public event Action OnBuilt = () => { }; 
+        
+        public float BlockScale => config.blockScale;
+        
+        public int2 GroupSize { get; private set; }
         
         public bool IsReady { get; private set; }
+        
+        public bool IsBuilding { get; private set; }
+        
         public NativeHashMap<int2, Entity> BlocksMap => blocksMap;
         public float3 VisualOrigin => visualOrigin;
         
         private BlockGroupConfig config;
         private Camera cam;
-        private Random random = Random.CreateFromIndex(0);
         private float3 visualOrigin;
         private NativeHashMap<int2, Entity> blocksMap;
-        private int2 size;
 
         private readonly List<BlockType> typePool = new List<BlockType>();
 
@@ -48,26 +49,21 @@ namespace Systems
                     typePool.Add(configBlock.type);
                 }
             }
-            
-            size = config.size;
-            blocksMap = new NativeHashMap<int2, Entity>(config.size.x * config.size.y, Allocator.Persistent);
-            await LoadConfigs(config.blocks);
-            AddGroup(config.initialDepth);
 
+            await LoadConfigs(config.blocks);
+            
             while (cam == null)
             {
                 await Task.Yield();
             }
 
-
-            
-            IsReady = true;
+            await Build(config.size);
         }
 
-        public bool ContainsPoint(int2 point) => BlockUtil.ContainsPoint(point, size);
+        public bool ContainsPoint(int2 point) => BlockUtil.ContainsPoint(point, GroupSize);
 
         public float3 ToWorldPoint(int2 blockPoint, float height) =>
-            visualOrigin + new float3(blockPoint.x, height, blockPoint.y) * config.blockSize;
+            visualOrigin + new float3(blockPoint.x, height, blockPoint.y) * config.blockScale;
         
         public Entity GetBlock(int2 point) => blocksMap[point];
 
@@ -84,14 +80,14 @@ namespace Systems
 
         public int2? ScreenToBlockPoint(int level)
         {
-            var plane = new Plane(Vector3.up, (Vector3)visualOrigin + new Vector3(0, -level + 0.5f, 0) * config.blockSize);
+            var plane = new Plane(Vector3.up, (Vector3)visualOrigin + new Vector3(0, -level + 0.5f, 0) * config.blockScale);
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (plane.Raycast(ray, out float enterDistance))
             {
                 float3 worldPoint = ray.GetPoint(enterDistance);
                 float3 result = worldPoint - visualOrigin;
 
-                result /= config.blockSize;
+                result /= config.blockScale;
                 var point = new int2(Mathf.RoundToInt(result.x), Mathf.RoundToInt(result.z));
 
                 if (ContainsPoint(point) == false)
@@ -107,9 +103,9 @@ namespace Systems
 
         public Entity CreateBlock(BlockType type, int2 position)
         {
-            float blockSize = config.blockSize;
-            Entity entity = CreateBaseEntity(visualOrigin + new float3(position.x, 0, position.y) * blockSize);
-            EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(blockSize, 50, blockSize) });
+            float scale = config.blockScale;
+            Entity entity = CreateBaseEntity(visualOrigin + new float3(position.x, 0, position.y) * scale);
+            EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(scale, GroupSize.x, scale) });
             EntityManager.AddComponentData(entity, new Block() { Type = type });
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
             EntityManager.AddComponentData(entity, new Depth() { Value = 0 });
@@ -118,8 +114,39 @@ namespace Systems
             return entity;
         }
         
-        private void AddGroup(int depth)
+        public async Task Build(int2 size)
         {
+            if (IsBuilding)
+            {
+                return;
+            }
+
+            GroupSize = size;
+            
+            OnWillBuild();
+
+            IsBuilding = true;
+            
+            IsReady = false;
+            
+            var drill = World.GetOrCreateSystem<DrillSystem>();
+
+            while (drill.CurrentJob.HasValue && drill.CurrentJob.Value.IsCompleted == false)
+            {
+                await Task.Yield();
+            }
+            
+            await Task.Yield();
+
+            if (blocksMap.IsCreated)
+            {
+                EntityManager.DestroyAndResetAllEntities();
+                
+                blocksMap.Dispose();
+            }
+
+            blocksMap = new NativeHashMap<int2, Entity>(size.x * size.y, Allocator.Persistent);
+            
             for (int x = 0; x < size.x; x++)
             {
                 for (int z = 0; z < size.y; z++) 
@@ -127,7 +154,14 @@ namespace Systems
                     var point = new int2(x, z);
                     blocksMap.Add(point, CreateBlock(BlockType.Dirt, point));
                 }
+                await Task.Yield();
             }
+            
+            IsReady = true;
+            
+            IsBuilding = false;
+
+            OnBuilt();
         }
         
         protected override void OnUpdate()
@@ -136,7 +170,6 @@ namespace Systems
             {
                 cam = Camera.main;
             }
-
         }
     }
 }

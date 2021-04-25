@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Systems;
 using DeepMiners.Data;
 using Unity.Collections;
@@ -16,7 +17,8 @@ namespace DeepMiners.Scene
         private EntityQuery query;
         private float targetZoom;
         private BlockGroupSystem blockGroupSystem;
-
+        
+        
         private float targetDepth;
         private Vector3 pressedCamPos;
         private Vector3 pressedScreenPos;
@@ -28,6 +30,20 @@ namespace DeepMiners.Scene
             blockGroupSystem = World.GetExistingSystem<BlockGroupSystem>();
             minDepthResult = new NativeArray<float>(1, Allocator.Persistent);
             query = GetEntityQuery(typeof(Block), typeof(Depth));
+            blockGroupSystem.OnWillBuild += async () => await OnBuild();
+        }
+
+        private async Task OnBuild()
+        {
+            while (setup == null)
+            {
+                await Task.Yield();
+            }
+            float size = blockGroupSystem.GroupSize.x * blockGroupSystem.BlockScale;
+            setup.maxZoom = size * setup.blockSizeFactor;
+            targetZoom = setup.maxZoom;
+            setup.depthOffset = size * setup.offsetFactor;
+            camTransform.position = new Vector3(-size / 2,  setup.depthOffset, -size / 2);
         }
 
         protected override void OnDestroy()
@@ -50,21 +66,20 @@ namespace DeepMiners.Scene
                 setup = camTransform.GetComponent<CameraSetup>();
             }
 
-            var depths = query.ToComponentDataArray<Depth>(Allocator.TempJob);
+            NativeArray<Depth> depths = query.ToComponentDataArray<Depth>(Allocator.Temp);
 
-            var result = minDepthResult;
+            NativeArray<float> result = minDepthResult;
             
-            Job.WithCode(() =>
+            float average = 0;
+            
+            for (int i = 0; i < depths.Length; i++)
             {
-                float average = 0;
-                for (int i = 0; i < depths.Length; i++)
-                {
-                    float d = depths[i].Value;
-                    average += d;
-                }
-                result[0] = average / depths.Length;
-                
-            }).Run();
+                float d = depths[i].Value;
+                average += d;
+            }
+            result[0] = average / depths.Length;
+
+            depths.Dispose();
 
             if (Time.ElapsedTime - lastDepthUpdateTime > setup.refreshRate)
             {

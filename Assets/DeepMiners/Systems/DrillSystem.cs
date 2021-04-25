@@ -3,6 +3,7 @@ using DeepMiners.Data;
 using DeepMiners.Utils;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine.AddressableAssets;
@@ -14,6 +15,9 @@ namespace Systems
     {
         private BlockGroupSystem groupSystem;
         private EntityCommandBufferSystem commandBufferSystem;
+
+        public JobHandle? CurrentJob;
+        
         protected override void OnCreate()
         {
             groupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
@@ -247,6 +251,8 @@ namespace Systems
             checkMap.Dispose(Dependency);
             
             commandBufferSystem.AddJobHandleForProducer(Dependency);
+
+            CurrentJob = Dependency;
         }
     }
 }

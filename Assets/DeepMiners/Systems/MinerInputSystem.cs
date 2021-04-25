@@ -1,13 +1,15 @@
 ﻿using System.Threading.Tasks;
 using DeepMiners.Data;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = Unity.Mathematics.Random;
 
 namespace Systems
 {
     [UpdateBefore(typeof(WorkerMoveSystem))]
-    public class BlockSelectionSystem : SystemBase
+    public class MinerInputSystem : SystemBase
     {
         private BlockGroupSystem blockGroupSystem;
         private WorkerFactorySystem workerFactorySystem;
@@ -15,7 +17,7 @@ namespace Systems
         private bool isReady;
         private double lastWorkerSpawn;
         private double currentSpawnRate = 0.01f;
-        
+
         protected override async void OnCreate()
         {
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
@@ -28,14 +30,19 @@ namespace Systems
             isReady = true;
         }
         
-        protected override void OnUpdate()
+        protected override async void OnUpdate()
         {
-            if (!isReady)
+            if (!isReady || !blockGroupSystem.IsReady)
             {
                 return;
             }
 
-           
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                int size = Random.CreateFromIndex((uint) Time.ElapsedTime).NextInt(16, 256);
+                await blockGroupSystem.Build(new int2(size,size));
+                return;
+            }
             
             if (Input.GetMouseButton(0))
             {

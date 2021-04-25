@@ -10,5 +10,7 @@ namespace DeepMiners.Scene
         public float minZoom;
         public float maxZoom;
         public float zoomSpeed = 5;
+        public float blockSizeFactor = 1;
+        public float offsetFactor = 1;
     }
 }

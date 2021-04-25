@@ -23,7 +23,7 @@ namespace Systems
                 await Task.Yield();
             }
             
-            size = groupSystem.BlockSize;
+            size = groupSystem.BlockScale;
         }
         
         protected override void OnUpdate()
