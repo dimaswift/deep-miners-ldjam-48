@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3557f789fbe64298b7edb959b6f87cf6, type: 3}
   m_Name: BlockGroup
   m_EditorClassIdentifier: 
-  blockSize: 1
-  initialDepth: 20
-  maxDepth: 1024
+  blockScale: 1
   size:
-    x: 128
-    y: 128
+    x: 300
+    y: 300
   blocks:
   - {fileID: 11400000, guid: 6219a49253d698042979d071880dc4da, type: 2}
   - {fileID: 11400000, guid: 999da3364d7c57344869b6e68f21e9ae, type: 2}

@@ -39,11 +39,11 @@ namespace DeepMiners.Scene
             {
                 await Task.Yield();
             }
-            float size = blockGroupSystem.GroupSize.x * blockGroupSystem.BlockScale;
-            setup.maxZoom = size * setup.blockSizeFactor;
+            int2 size = blockGroupSystem.GroupSize;
+            setup.maxZoom = math.max(size.x, size.y) * setup.blockSizeFactor;
             targetZoom = setup.maxZoom;
-            setup.depthOffset = size * setup.offsetFactor;
-            camTransform.position = new Vector3(-size / 2,  setup.depthOffset, -size / 2);
+            setup.depthOffset = math.min(size.x, size.y) * setup.offsetFactor;
+            camTransform.position = new Vector3(-size.y / 2f,  setup.depthOffset, -size.x / 2f);
         }
 
         protected override void OnDestroy()

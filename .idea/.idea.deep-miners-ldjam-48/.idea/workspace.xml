@@ -6,20 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7b4c7971-2fe4-4fff-9b19-be3a3d0df8f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/Windows/addressables_content_state.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/Windows/addressables_content_state.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/BlockGroup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/BlockGroup.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockGroupConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockGroupConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSetup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSetup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,9 +97,9 @@
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1rayeSEf7iqr5bGA6uKPMjLibP3" />
