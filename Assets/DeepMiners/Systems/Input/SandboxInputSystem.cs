@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
+using Systems;
 using DeepMiners.Data;
+using DeepMiners.Systems.Input.Windows;
 using Unity.Entities;
-using Unity.Jobs;
 using Unity.Mathematics;
-using UnityEngine;
-using Random = Unity.Mathematics.Random;
+using UnityEngine.EventSystems;
 
-namespace Systems
+namespace DeepMiners.Systems.Input
 {
-    [UpdateBefore(typeof(WorkerMoveSystem))]
-    public class MinerInputSystem : SystemBase
+    [UpdateInGroup(typeof (LateSimulationSystemGroup), OrderLast = true)]
+    public class SandboxInputSystem : BaseModeSystem<ISandboxWindow>
     {
         private BlockGroupSystem blockGroupSystem;
         private WorkerFactorySystem workerFactorySystem;
@@ -18,8 +18,24 @@ namespace Systems
         private double lastWorkerSpawn;
         private double currentSpawnRate = 0.01f;
 
-        protected override async void OnCreate()
+        protected override GameMode Mode => GameMode.Sandbox;
+        
+        protected override async Task OnActivated()
         {
+            await blockGroupSystem.Build(blockGroupSystem.DefaultGroupSize);
+            await Window.Show();
+            isReady = true;
+        }
+
+        protected override async Task OnWillBeDeactivated()
+        {
+            await Window.Hide();
+            isReady = false;
+        }
+
+        protected override async Task OnInit()
+        {
+            blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
            
@@ -30,21 +46,21 @@ namespace Systems
             isReady = true;
         }
         
-        protected override async void OnUpdate()
+        public async Task Reset()
+        {
+            var system = World.GetExistingSystem<BlockGroupSystem>();
+            int2 size = system.GroupSize;
+            await system.Build(size);
+        }
+
+        protected override void OnUpdate()
         {
             if (!isReady || !blockGroupSystem.IsReady)
             {
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                int size = Random.CreateFromIndex((uint) Time.ElapsedTime).NextInt(16, 256);
-                await blockGroupSystem.Build(new int2(size,size));
-                return;
-            }
-            
-            if (Input.GetMouseButton(0))
+            if (UnityEngine.Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject() == false)
             {
                 if (Time.ElapsedTime - lastWorkerSpawn < currentSpawnRate)
                 {

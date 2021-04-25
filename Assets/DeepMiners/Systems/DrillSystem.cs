@@ -1,12 +1,10 @@
-﻿using DeepMiners.Config;
-using DeepMiners.Data;
+﻿using DeepMiners.Data;
 using DeepMiners.Utils;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine.AddressableAssets;
 using Random = Unity.Mathematics.Random;
 
 namespace Systems

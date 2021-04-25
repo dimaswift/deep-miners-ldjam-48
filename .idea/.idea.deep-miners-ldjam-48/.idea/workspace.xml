@@ -5,8 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4c7971-2fe4-4fff-9b19-be3a3d0df8f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/GameMode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/GameMode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/GameModeSelectionSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/GameModeSelectionSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/BaseModeSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/BaseModeSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/IWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/IWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/SandboxInputSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/SandboxInputSystem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/Windows.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/Windows/IMainWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/Windows/IMainWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/Windows/ISandboxWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/Windows/ISandboxWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/SoundReference.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/SoundReference.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SettingsWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SettingsWindow.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/BlockGroup.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/BlockGroup.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Selection.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Selection.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/Blobs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Program Files/Unity/Hub/Editor/2020.3.4f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6BA37D97-DEE2-4EA8-B7ED-F1E34D6F9322/67/7098628c/LateSimulationSystemGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/EntityManagerCreateArchetype.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/ComponentSystemGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.entities@0.17.0-preview.41/Unity.Entities/EntityCommandBufferSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -49,43 +86,13 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockSelection.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Jobs/FindBlockJob.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Jobs/DestroyBlockJob.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockGroupVisualOrigin.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/MoveSpeed.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockDestination.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationIndex.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Dent.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillSpeed.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Prefabs/RenderMeshPrefab.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/NativeCurve.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalVelocity.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlobAssetUtils.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillAnimations.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/CurveUtil.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/VerticalLimit.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockConfig.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DestroyBlock.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockColor.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Effect.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillHit.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/DrillConfig.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/GravitySystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/BlockPoint.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DestinationPoint.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillPower.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/WorkerConfig.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDestroySystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Depth.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAnimations.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerType.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDentSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/ConfigurableSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/EffectSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDepthSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraController.cs" />
@@ -94,12 +101,42 @@
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockGroupConfig.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSetup.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockDepthSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/UI/MainScreen.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/UI/Window.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/UI/MainWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/UIListener.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/ClickSound.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UIListener.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Window.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/MainWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/MainWindowSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/GameMode.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Systems/SandboxWindowSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Systems/SandboxInputSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Systems/MainWindowSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Systems/WelcomeScreenInputSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Systems/BaseModeSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/Windows/ISandboxWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerMoveSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/IWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/GameModeSelectionSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/BaseModeSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockGroupSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/WelcomeScreenInputSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/MainWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/Window.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/ClickEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/SandboxInputSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SettingsWindow.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1rayeSEf7iqr5bGA6uKPMjLibP3" />

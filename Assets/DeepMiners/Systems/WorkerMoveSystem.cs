@@ -38,10 +38,11 @@ namespace Systems
             float3 origin = groupSystem.VisualOrigin;
 
             Dependency = Entities.ForEach((Entity entity,
-                MoveSpeed speed,
-                DestinationPoint destination,
-                ref Translation translation) =>
-            {
+                ref Translation translation,
+                in MoveSpeed speed,
+                in DestinationPoint destination
+               ) =>
+            { 
 
                 int2 point = destination.Value;
                 

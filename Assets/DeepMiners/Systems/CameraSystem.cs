@@ -43,7 +43,7 @@ namespace DeepMiners.Scene
             setup.maxZoom = math.max(size.x, size.y) * setup.blockSizeFactor;
             targetZoom = setup.maxZoom;
             setup.depthOffset = math.min(size.x, size.y) * setup.offsetFactor;
-            camTransform.position = new Vector3(-size.y / 2f,  setup.depthOffset, -size.x / 2f);
+            camTransform.position = new Vector3(-size.y / 2f,  setup.depthOffset, -size.x / 2f); 
         }
 
         protected override void OnDestroy()

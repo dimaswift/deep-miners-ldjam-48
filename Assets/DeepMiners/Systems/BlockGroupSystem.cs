@@ -16,6 +16,8 @@ namespace Systems
 {
     public class BlockGroupSystem : ConfigurableSystem<BlockConfig>
     {
+
+        public int2 DefaultGroupSize => config.size;
         
         public event Action OnWillBuild = () => { }; 
         public event Action OnBuilt = () => { }; 
@@ -26,14 +28,15 @@ namespace Systems
         
         public bool IsReady { get; private set; }
         
+        public bool Initialized { get; private set; }
+        
         public bool IsBuilding { get; private set; }
         
         public NativeHashMap<int2, Entity> BlocksMap => blocksMap;
-        public float3 VisualOrigin => visualOrigin;
+        public float3 VisualOrigin => float3.zero;
         
         private BlockGroupConfig config;
         private Camera cam;
-        private float3 visualOrigin;
         private NativeHashMap<int2, Entity> blocksMap;
 
         private readonly List<BlockType> typePool = new List<BlockType>();
@@ -51,41 +54,38 @@ namespace Systems
             }
 
             await LoadConfigs(config.blocks);
-            
-            while (cam == null)
-            {
-                await Task.Yield();
-            }
 
-            await Build(config.size);
+            Initialized = true;
         }
 
         public bool ContainsPoint(int2 point) => BlockUtil.ContainsPoint(point, GroupSize);
 
         public float3 ToWorldPoint(int2 blockPoint, float height) =>
-            visualOrigin + new float3(blockPoint.x, height, blockPoint.y) * config.blockScale;
+            VisualOrigin + new float3(blockPoint.x, height, blockPoint.y) * config.blockScale;
         
         public Entity GetBlock(int2 point) => blocksMap[point];
 
         protected override void OnDestroy()
         {
-            blocksMap.Dispose();
+            if (blocksMap.IsCreated)
+            {
+                blocksMap.Dispose();
+            }
         }
 
         protected override async Task LoadConfigs(BlockConfig[] configs)
         {
-            visualOrigin = GameObject.Find("Origin").transform.position;
             await base.LoadConfigs(configs);
         }
 
         public int2? ScreenToBlockPoint(int level)
         {
-            var plane = new Plane(Vector3.up, (Vector3)visualOrigin + new Vector3(0, -level + 0.5f, 0) * config.blockScale);
+            var plane = new Plane(Vector3.up, (Vector3)VisualOrigin + new Vector3(0, -level + 0.5f, 0) * config.blockScale);
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (plane.Raycast(ray, out float enterDistance))
             {
                 float3 worldPoint = ray.GetPoint(enterDistance);
-                float3 result = worldPoint - visualOrigin;
+                float3 result = worldPoint - VisualOrigin;
 
                 result /= config.blockScale;
                 var point = new int2(Mathf.RoundToInt(result.x), Mathf.RoundToInt(result.z));
@@ -104,7 +104,7 @@ namespace Systems
         public Entity CreateBlock(BlockType type, int2 position)
         {
             float scale = config.blockScale;
-            Entity entity = CreateBaseEntity(visualOrigin + new float3(position.x, 0, position.y) * scale);
+            Entity entity = CreateBaseEntity(VisualOrigin + new float3(position.x, 0, position.y) * scale);
             EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(scale, GroupSize.x, scale) });
             EntityManager.AddComponentData(entity, new Block() { Type = type });
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
@@ -112,6 +112,18 @@ namespace Systems
             RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)type]);
             
             return entity;
+        }
+
+        public void CleanUp()
+        {
+            if (blocksMap.IsCreated)
+            {
+                EntityManager.DestroyAndResetAllEntities();
+                
+                blocksMap.Dispose();
+            }
+
+            IsReady = false;
         }
         
         public async Task Build(int2 size)
@@ -138,12 +150,7 @@ namespace Systems
             
             await Task.Yield();
 
-            if (blocksMap.IsCreated)
-            {
-                EntityManager.DestroyAndResetAllEntities();
-                
-                blocksMap.Dispose();
-            }
+            CleanUp();
 
             blocksMap = new NativeHashMap<int2, Entity>(size.x * size.y, Allocator.Persistent);
             

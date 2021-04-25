@@ -35,6 +35,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 95fc598485a995d4da1d2db17a57a4ba
+    m_Address: Assets/Windows/MainWindow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2f200c57346e9b44aa9ee271b2390f90
+    m_Address: Sounds/button
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 88a51fb4f3b1c0b4d80ca88d34cc2fbe
+    m_Address: Assets/Windows/SandboxWindow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6ef672568dbac51449ca73a5aefa39d8, type: 2}
   m_SchemaSet:
