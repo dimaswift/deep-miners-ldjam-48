@@ -9,5 +9,7 @@ namespace DeepMiners.Data
         public float LastDentTime;
         public float Damping;
         public float SizeLossPerHit;
+        public int Radius;
+        public int MaxConsecutiveHits;
     }
 }

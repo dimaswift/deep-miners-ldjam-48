@@ -60,7 +60,7 @@ namespace Systems
                 Color color = workerFactorySystem.GetConfig(hits[i].WorkerType).color;
                 Entity effect = buffer.CreateEntity();
                 float3 pos = positions[i].Value;
-                pos.y = (pos.y + 0.5f) - ((1f - dents[i].Value) / 2) + 0.0001f;
+                pos.y = -dents[i].Value + 0.01f;
                 buffer.AddComponent(effect, new Translation() { Value = pos });
                 buffer.AddComponent(effect, new LocalToWorld());
                 buffer.AddComponent(effect, new Rotation() { Value = rot });
@@ -74,7 +74,7 @@ namespace Systems
                 if (Time.ElapsedTime - lastSoundPlayTime > 0.05f)
                 {
                     lastSoundPlayTime = (float)Time.ElapsedTime;
-                    AudioClip sound = drillConfig.hitSounds[math.clamp((int)(dents[i].Value * drillConfig.hitSounds.Length), 0, drillConfig.hitSounds.Length)];
+                    AudioClip sound = drillConfig.hitSounds[math.clamp((int)(dents[i].Value * drillConfig.hitSounds.Length), 0, drillConfig.hitSounds.Length - 1)];
                     hitSource.PlayOneShot(sound);
                 }
                 

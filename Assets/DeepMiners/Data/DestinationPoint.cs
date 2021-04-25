@@ -5,6 +5,6 @@ namespace DeepMiners.Data
 {
     public struct DestinationPoint : IComponentData
     {
-        public int3 Value;
+        public int2 Value;
     }
 }

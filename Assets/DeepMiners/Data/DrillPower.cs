@@ -6,5 +6,7 @@ namespace DeepMiners.Data
     {
         public float Amount;
         public float Rate;
+        public int Hits;
+
     }
 }

@@ -3,6 +3,8 @@ using DeepMiners.Data;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = Unity.Mathematics.Random;
 
 namespace DeepMiners.Utils
@@ -10,127 +12,88 @@ namespace DeepMiners.Utils
     public static class BlockUtil
     {
 
-        private static void CheckNeighbourBlocks(Random random, int3 point, int3 origin, int2 size, NativeHashMap<int3, Entity> map, NativeList<int3> fill, NativeHashMap<int3, int> checkMap)
+        private static bool CheckNeighbourBlocks<T>(Random random, int2 point, int2 origin, int2 size, NativeHashMap<int2, Entity> map, NativeList<int2> list, ComponentDataFromEntity<T> filter, NativeHashMap<int2, int> checkMap) where T: struct, IComponentData
         {
-            var r = random.NextInt(0, 3);
+            var r = random.NextInt(0, 6);
             
             if (checkMap.ContainsKey(point))
             {
-                return;
+                return false;
             }
             
-            if (point.x >= size.x || point.z >= size.y || point.x < 0 || point.z < 0)
+            if (point.x >= size.x || point.y >= size.y || point.x < 0 || point.y < 0)
             {
-                return;
+                return false;
             }
 
-            if (map[point] != Entity.Null)
+            if (!filter.HasComponent(map[point]) && !point.Equals(origin))
             {
-                checkMap.Add(point, math.abs(origin.x - point.x) + math.abs(origin.z - point.z));
-                fill.Add(point);
-                return;
+                list.Add(point);
+                return true;
             }
             
             checkMap.Add(point, -1);
 
-            if (r == 0)
-            {
-                CheckNeighbourBlocks(random, new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
-
-                CheckNeighbourBlocks(random,new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
-
-                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
-
-                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
-            }
-            else if (r == 1)
-            {
-                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
-                
-                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
-                
-                CheckNeighbourBlocks(random,new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
-                
-                CheckNeighbourBlocks(random,new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
-            }
-            else
-            {
-                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
-                
-                CheckNeighbourBlocks(random,new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
-
-                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
-                
-                CheckNeighbourBlocks(random,new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
-            }
+            CheckNeighbourBlocks(random, new int2(point.x + 1, point.y), origin, size, map, list, filter, checkMap);
+            CheckNeighbourBlocks(random, new int2(point.x, point.y + 1), origin, size, map, list, filter, checkMap);
+            CheckNeighbourBlocks(random, new int2(point.x - 1, point.y), origin, size, map, list, filter, checkMap);
+            CheckNeighbourBlocks(random, new int2(point.x, point.y - 1), origin, size, map, list, filter, checkMap);
+            
+            
+            return false;
         }
         
         public static float3 ToWorld(int3 blockPoint, float3 visualOrigin, float blockSize) =>
             visualOrigin + new float3(blockPoint.x, -blockPoint.y, blockPoint.z) * blockSize;
         
-        public static bool GetClosestBlockOnSameLevel<T>(Random random, int3 point, ComponentDataFromEntity<T> filter, NativeHashMap<int3, Entity> map, NativeHashMap<int3, int> checkMap, NativeList<int3> list, int2 size, out int3 result) where T : struct, IComponentData
+        public static bool GetClosestBlockOnSameLevel<T>(
+            Random random, 
+            int2 point, 
+            ComponentDataFromEntity<Dent> sorter, 
+            ComponentDataFromEntity<T> filter, 
+            NativeHashMap<int2, Entity> map, 
+            NativeHashMap<int2, int> checkMap, 
+            NativeList<int2> list, int2 size, 
+            
+            out int2 result) where T : struct, IComponentData
         {
+            list.Clear();
             checkMap.Clear();
-            result = new int3();
-            CheckNeighbourBlocks(random,point, point, size, map, list, checkMap);
-        
-            int closest = int.MaxValue;
+            result = new int2(-1,-1);
+            CheckNeighbourBlocks(random, point, point, size, map, list, filter, checkMap);
+            int2 origin = point;
+            float closest = int.MaxValue;
+
             for (int i = 0; i < list.Length; i++)
             {
-                int3 p = list[i];
-                if (!filter.HasComponent(map[p]))
+                int2 p = list[i];
+                var e = map[p];
+
+                var dist = sorter[e];
+                if (dist.Value < closest && !origin.Equals(p))
                 {
-                    closest = p.x;
+                    closest = dist.Value;
                     result = p;
-                    break;
                 }
             }
 
-            return closest != int.MaxValue;
-         
+            return result.x >= 0;
+
         }
         
-        public static bool HasBlock(int3 position, int2 size, int currentDepth, NativeHashMap<int3, Entity> map)
+        public static bool HasBlock(int2 position, int2 size, NativeHashMap<int2, Entity> map)
         {
-            return ContainsPoint(position, size, currentDepth) && map[position] != Entity.Null;
+            return ContainsPoint(position, size) && map[position] != Entity.Null;
         }
         
-        public static bool BuildPath(int3 source, int3 destination, NativeHashMap<int3, Entity> map, DynamicBuffer<BlockDestination> path)
-        {
-            path.Clear();
-            
-            
-            
-            return true;
-        }
         
-        public static bool  ContainsPoint(int3 point, int2 size, int currentDepth)
+        public static bool ContainsPoint(int2 point, int2 size)
         {
-            if (point.x < 0 || point.z < 0)
+            if (point.x < 0 || point.y < 0)
             {
                 return false;
             }
-            return point.x < size.x && point.z < size.y && point.y < currentDepth;
+            return point.x < size.x && point.y < size.y;
         }
-
-        public static int GetHighestNonEmptyBlockLevel(NativeHashMap<int3, Entity> map, int2 size, int currentDepth, int start)
-        {
-            for (int level = start; level < currentDepth; level++)
-            {
-                for (int x = 0; x < size.x; x++)
-                {
-                    for (int z = 0; z < size.y; z++)
-                    {
-                        if (map[new int3(x, level, z)] != Entity.Null)
-                        {
-                            return level;
-                        }
-                    }
-                }
-            }
-
-            return start;
-        }
-        
     }
 }

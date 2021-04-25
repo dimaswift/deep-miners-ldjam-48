@@ -35,8 +35,6 @@ namespace Systems
                 return;
             }
 
-            Dependency = groupSystem.WaitForModificationJob(Dependency);
-
             float dt = Time.DeltaTime;
             float s = size;
 
@@ -47,9 +45,9 @@ namespace Systems
                 ref Translation translation) =>
             {
 
-                int3 point = destination.Value;
+                int2 point = destination.Value;
                 
-                float3 finalPos = origin.Value + new float3(point.x, translation.Value.y, point.z) * s;
+                float3 finalPos = origin.Value + new float3(point.x, translation.Value.y, point.y) * s;
 
                 float actualSpeed = speed.Value;
                 

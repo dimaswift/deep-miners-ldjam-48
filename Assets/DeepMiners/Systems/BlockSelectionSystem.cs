@@ -19,14 +19,10 @@ namespace Systems
     public class BlockSelectionSystem : SystemBase
     {
         private BlockGroupSystem blockGroupSystem;
-        private EntityCommandBufferSystem commandBufferSystem;
 
         private RenderMeshDescription selectionRenderer;
         private WorkerFactorySystem workerFactorySystem;
-        private NativeArray<int3> selection;
-        
-        private Entity debugEntity;
- 
+
         private bool isReady;
         
 
@@ -34,10 +30,7 @@ namespace Systems
         {
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
-            commandBufferSystem = World.GetOrCreateSystem<EntityCommandBufferSystem>();
-
-            selection = new NativeArray<int3>(1, Allocator.Persistent) {[0] = new int3(-1, -1, -1)};
-
+           
             while (blockGroupSystem.IsReady == false)
             {
                 await Task.Yield();
@@ -49,12 +42,7 @@ namespace Systems
             isReady = true;
 
         }
-
-        protected override void OnDestroy()
-        {
-            selection.Dispose();
-        }
-
+        
         private Entity CreateDebugEntity()
         {
             Entity entity = EntityManager.CreateEntity(
@@ -70,7 +58,7 @@ namespace Systems
             return entity;
         }
         
-        public void Select(int3 point)
+        public void Select(int2 point)
         {
             Entity selectionMesh = EntityManager.CreateEntity(
                 typeof(Translation),
@@ -81,7 +69,7 @@ namespace Systems
             RenderMeshUtility.AddComponents(selectionMesh, EntityManager, selectionRenderer);
             float blockSize = blockGroupSystem.BlockSize;
             EntityManager.SetComponentData(selectionMesh, new NonUniformScale()  { Value = new float3(blockSize,blockSize,blockSize) }  );
-            EntityManager.SetComponentData(selectionMesh, new Translation()  { Value = blockGroupSystem.ToWorldPoint(point)}  );
+            EntityManager.SetComponentData(selectionMesh, new Translation()  { Value = blockGroupSystem.ToWorldPoint(point, 0)}  );
         }
         
         
@@ -93,64 +81,17 @@ namespace Systems
                 return;
             }
 
-            Dependency = blockGroupSystem.WaitForModificationJob(Dependency);
-            
-            if (selection[0].x >= 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                workerFactorySystem.CreateWorker(WorkerType.ShovelDigger, selection[0]);
+                int2? current = blockGroupSystem.ScreenToBlockPoint(1);
 
-                selection[0] = new int3(-1, -1, -1);
-            }
-            
-            if (!Input.GetMouseButtonDown(0))
-            {
-                return;
-            }
-
-            var map = blockGroupSystem.BlocksMap;
-            
-            int3? current = blockGroupSystem.ScreenToBlockPoint(1);
-
-            var depth = blockGroupSystem.CurrentDepth;
-            
-            int2 groupSize = blockGroupSystem.GroupSize;
-
-            Random random = Random.CreateFromIndex((uint)Time.ElapsedTime);
-
-            if (current.HasValue)
-            {
-                int3 c = current.Value;
-
-                NativeHashMap<int3, int> checkMap = new
-                    NativeHashMap<int3, int>(blockGroupSystem.GroupSize.x * blockGroupSystem.GroupSize.y,
-                        Allocator.TempJob);
-                
-                NativeList<int3> checkList = new
-                    NativeList<int3>(blockGroupSystem.GroupSize.x * blockGroupSystem.GroupSize.y,
-                        Allocator.TempJob);
-                
-                var isDrilled = GetComponentDataFromEntity<IsBeingDrilling>();
-
-                var s = selection;
-                
-                Dependency = Job.WithReadOnly(map).WithReadOnly(isDrilled).WithCode(() =>
+                if (current.HasValue)
                 {
-                    c.y = BlockUtil.GetHighestNonEmptyBlockLevel(map, groupSize, depth, 1);
-                    if (BlockUtil.GetClosestBlockOnSameLevel(random, c, isDrilled, map, checkMap, checkList, groupSize, out int3 closest))
-                    {
-                        s[0] = closest;
-                    }
-
-                }).Schedule(Dependency);
-                
-                checkMap.Dispose(Dependency);
-
-                checkList.Dispose(Dependency);
-                
-                commandBufferSystem.AddJobHandleForProducer(Dependency);
+                    int2 c = current.Value;
+                    workerFactorySystem.CreateWorker(WorkerType.ShovelDigger, c);
+                }
             }
-            
-           
+        
 
         }
 

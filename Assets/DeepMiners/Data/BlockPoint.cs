@@ -5,6 +5,6 @@ namespace DeepMiners.Data
 {
     public struct BlockPoint : IComponentData
     {
-        public int3 Value;
+        public int2 Value;
     }
 }

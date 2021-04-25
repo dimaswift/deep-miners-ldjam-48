@@ -75,13 +75,13 @@ namespace Systems
 
         public WorkerConfig GetConfig(WorkerType type) => Configs[(int) type];
         
-        public Entity CreateWorker(WorkerType type, int3 position)
+        public Entity CreateWorker(WorkerType type, int2 position)
         {
             WorkerConfig workerConfig = Configs[(int)type];
             
-            float3 worldPos = blockGroupSystem.VisualOrigin + position;
+            float3 worldPos = blockGroupSystem.VisualOrigin + new float3(position.x, 0, position.y);
 
-            Entity block = blockGroupSystem.GetBlock(new int3() {x = position.x, y = 1, z = position.z});
+            Entity block = blockGroupSystem.GetBlock(position);
              
             Entity entity = CreateBaseEntity(worldPos);
             EntityManager.AddComponentData(entity, new Worker()
@@ -90,7 +90,9 @@ namespace Systems
                 CurrentBlock = block,
                 LastDentTime = Time.DeltaTime,
                 Damping = 0.5f,
-                SizeLossPerHit = workerConfig.sizeLossPerHit
+                SizeLossPerHit = workerConfig.sizeLossPerHit,
+                Radius = workerConfig.radius,
+                MaxConsecutiveHits = workerConfig.maxConsecutiveHits
             } );
             EntityManager.AddComponentData(entity, new MoveSpeed() { Value = workerConfig.moveSpeed });
             EntityManager.AddComponentData(entity, new DestinationPoint() { Value = position });
@@ -104,7 +106,7 @@ namespace Systems
             
             EntityManager.AddComponentData(entity, new IgnoreGravity());
             RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)type]);
-            EntityManager.SetComponentData(entity, new Translation() { Value = blockGroupSystem.ToWorldPoint(position) });
+            EntityManager.SetComponentData(entity, new Translation() { Value = blockGroupSystem.ToWorldPoint(position, 0) });
             return entity;
         }
 

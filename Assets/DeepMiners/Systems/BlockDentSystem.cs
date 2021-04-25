@@ -25,17 +25,11 @@ namespace Systems
         {
             float size = blockSize;
             EntityCommandBuffer commandBuffer = commandBufferSystem.CreateCommandBuffer();
-            Entities.WithNone<DestroyBlock>().ForEach((Entity entity, ref Translation translation, ref NonUniformScale scale,
+            Entities.WithNone<DestroyBlock>().ForEach((Entity entity, ref Translation translation,
                 in Dent dent, in BlockPoint point, in BlockGroupVisualOrigin origin) =>
             {
                 float y = origin.Value.y - point.Value.y;
-                translation.Value = new float3(translation.Value.x, y - (((1f - dent.Value) / 2) * size),
-                    translation.Value.z);
-                scale.Value = new float3(scale.Value.x, size * dent.Value, scale.Value.z);
-                if (dent.Value <= 0)
-                {
-                    commandBuffer.AddComponent(entity, new DestroyBlock());
-                }
+                translation.Value = new float3(translation.Value.x, -dent.Value, translation.Value.z);
 
             }).Schedule(); 
         }
