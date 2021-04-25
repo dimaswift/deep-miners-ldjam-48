@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Systems
 {
-    [UpdateAfter(typeof(LateSimulationSystemGroup))]
     public class BlockDestroySystem : SystemBase
     {
         private EntityCommandBufferSystem commandBufferSystem;

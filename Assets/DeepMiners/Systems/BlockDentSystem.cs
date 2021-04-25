@@ -2,9 +2,21 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Systems
 {
+    public static class Boot
+    {
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void Initialize()
+        {
+#if UNITY_DISABLE_AUTOMATIC_SYSTEM_BOOTSTRAP
+        DefaultWorldInitialization.Initialize("Default World", false);
+#endif
+        }
+    }
+    
     [UpdateAfter(typeof(BlockGroupSystem))]
     public class BlockDentSystem : SystemBase
     {
