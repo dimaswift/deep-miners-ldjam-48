@@ -6,6 +6,7 @@ using DeepMiners.Data;
 using DeepMiners.Systems.Input.Windows;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace DeepMiners.Systems.Input
@@ -19,10 +20,13 @@ namespace DeepMiners.Systems.Input
         private bool isReady;
         private double lastWorkerSpawn;
         private double currentSpawnRate = 0.01f;
+        private int2 prevWorkerSpawnPoint;
         
         protected override GameMode Mode => GameMode.Sandbox;
 
-        
+        private WorkerConfig customWorker;
+
+        public WorkerConfig GetCustomWorker() => customWorker;
         
         public WorkerConfig ActiveWorker { get; private set; }
         
@@ -63,7 +67,16 @@ namespace DeepMiners.Systems.Input
             yield return new int2(1024, 1024);
         }
 
-        public IEnumerable<WorkerConfig> GetAvailableWorkers() => workerFactorySystem.GetWorkersConfigs();
+        public IEnumerable<WorkerConfig> GetAvailableWorkers()
+        {
+            yield return customWorker;
+            foreach (WorkerConfig workerConfig in workerFactorySystem.GetWorkersConfigs())
+            {
+                yield return workerConfig;
+            }
+        }
+        
+        
         
         protected override async Task OnWillBeDeactivated()
         {
@@ -71,12 +84,19 @@ namespace DeepMiners.Systems.Input
             isReady = false;
         }
 
+        public bool IsCustomWorkerSelected() => ActiveWorker == customWorker;
+        
+        
+        
         protected override async Task OnInit()
         {
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
-            blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
-            await SetActiveWorker(workerFactorySystem.DefaultWorker);
+
+            customWorker = Object.Instantiate(workerFactorySystem.DefaultWorker);
+            customWorker.displayName = "Manual";
+            
+            await SetActiveWorker(customWorker);
             while (blockGroupSystem.IsReady == false)
             {
                 await Task.Yield();
@@ -127,10 +147,11 @@ namespace DeepMiners.Systems.Input
 
                 int2? current = blockGroupSystem.ScreenToBlockPoint(1);
 
-                if (current.HasValue)
+                if (current.HasValue && !prevWorkerSpawnPoint.Equals(current.Value))
                 {
                     int2 c = current.Value;
                     workerFactorySystem.CreateWorker(ActiveWorker, c);
+                    prevWorkerSpawnPoint = current.Value;
                 }
             }
         }

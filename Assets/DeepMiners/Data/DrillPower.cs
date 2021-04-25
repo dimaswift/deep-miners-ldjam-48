@@ -5,7 +5,7 @@ namespace DeepMiners.Data
     public struct DrillPower : IComponentData
     {
         public float Amount;
-        public float Rate;
+        public float Frequency;
         public int Hits;
 
     }

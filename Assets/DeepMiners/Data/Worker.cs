@@ -10,7 +10,7 @@ namespace DeepMiners.Data
         public float LastHitTime;
         public float SizeLossPerHit;
         public int Radius;
-        public int MaxConsecutiveHits;
+        public int MaxBounces;
         public float4 Color;
     }
 }

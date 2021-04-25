@@ -19,15 +19,15 @@ namespace DeepMiners.Config
         public float power = 0.5f;
 
         
-        public float drillRate = 0.5f;
+        public float frequency = 0.5f;
         public float moveSpeed = 5;
 
         public float size = 0.5f;
         public Color color = new Color(1,1,1,1);
-        [Range(0f, 1f)]
+
         public float sizeLossPerHit = 0.01f;
 
         public int radius = 1;
-        public int maxConsecutiveHits = 3;
+        public int maxBounces = 3;
     }
 }

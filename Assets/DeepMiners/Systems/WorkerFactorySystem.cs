@@ -58,14 +58,14 @@ namespace Systems
                 LastHitTime = Time.DeltaTime,
                 SizeLossPerHit = workerConfig.sizeLossPerHit,
                 Radius = workerConfig.radius,
-                MaxConsecutiveHits = workerConfig.maxConsecutiveHits,
+                MaxBounces = workerConfig.maxBounces,
                 Color = new float4(color.r, color.g, color.b, color.a)
             } );
             EntityManager.AddComponentData(entity, new MoveSpeed() { Value = workerConfig.moveSpeed });
             EntityManager.AddComponentData(entity, new DestinationPoint() { Value = position });
             EntityManager.AddComponentData(entity, new VerticalLimit() { FlightHeight = Random.CreateFromIndex((uint)Time.ElapsedTime).NextInt(5, 8) });
             EntityManager.AddComponentData(entity, new NonUniformScale() { Value = workerConfig.size });
-            EntityManager.AddComponentData(entity, new DrillPower() { Amount = workerConfig.power, Rate = workerConfig.drillRate });
+            EntityManager.AddComponentData(entity, new DrillPower() { Amount = workerConfig.power, Frequency = workerConfig.frequency });
             EntityManager.AddComponentData(entity, new WorkerAnimations() { Bounce = bounceCurve });
             RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)workerConfig.ability]);
             EntityManager.SetComponentData(entity, new Translation() { Value = blockGroupSystem.ToWorldPoint(position, 0) });

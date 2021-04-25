@@ -9,10 +9,8 @@ using UnityEngine.UI;
 namespace DeepMiners.UI
 {
     [RequireComponent(typeof(Button))]
-    public class DropdownOption : MonoBehaviour
+    public class DropdownOption : Element
     {
-        public object Context { get; private set; }
-        
         [SerializeField] private TextMeshProUGUI actionText;
         [SerializeField] private Image icon;
         [SerializeField] private GameObject selectionFrame;
@@ -34,10 +32,9 @@ namespace DeepMiners.UI
         {
             selectionFrame.SetActive(selected);
         }
-        
-        public virtual async Task SetUp(object context, string action, Func<DropdownOption, Task> callback, AssetReferenceSprite iconRef)
+
+        public async Task SetOptions(string action, Func<DropdownOption, Task> callback, AssetReferenceSprite iconRef)
         {
-            Context = context;
             this.callback = callback;
             actionText.text = action;
 
@@ -57,7 +54,7 @@ namespace DeepMiners.UI
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"cannot load icon: {iconRef.SubObjectName}");
+                    Debug.LogError($"cannot load icon: {iconRef?.SubObjectName}");
                     Debug.LogException(e);
                 }
             }

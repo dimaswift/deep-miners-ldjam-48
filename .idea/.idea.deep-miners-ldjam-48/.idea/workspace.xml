@@ -5,34 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b4c7971-2fe4-4fff-9b19-be3a3d0df8f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Dropdown.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Dropdown.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DropdownOption.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DropdownOption.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/CustomProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/CustomProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DiscreteNumberInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DiscreteNumberInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Element.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Element.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/FloatProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/FloatProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerBouncesProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerBouncesProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerDurabilityProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerDurabilityProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerFrequencyProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerFrequencyProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerPowerProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerPowerProperty.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerPropertyWrapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerPropertyWrapper.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerRadiusProperty.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerRadiusProperty.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.deep-miners-ldjam-48/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Drill.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Drill.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Workers/ShovelDigger.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Configs/Workers/ShovelDigger.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configs/Workers/default.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configs/Workers/default.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Config/WorkerConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Config/WorkerConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillHit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillHit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/GameMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/GameMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillPower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillPower.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAbility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerType.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAbility.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/GameModeSelectionSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/GameModeSelectionSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/SandboxInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/SandboxInputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/WelcomeScreenInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/WelcomeScreenInputSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/MainWindow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/MainWindow.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/SandboxWindow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/SandboxWindow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIScripts/DeepMiners.UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/DeepMiners.UI.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/ClickEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/ClickEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/MainWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/MainWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Dropdown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Dropdown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DropdownOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DropdownOption.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SettingsWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SettingsWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/Window.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/Window.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,15 +81,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/ConfigurableSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/EffectSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraController.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Utils/BlockUtil.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/BlockSelectionSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/BlockGroupConfig.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Scene/CameraSetup.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Boot.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/CameraSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Block.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/UI.cs" />
@@ -112,20 +108,29 @@
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/MinerInputSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/WelcomeScreenInputSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/GameModeSelectionSystem.cs" />
-      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/ClickEffect.cs" />
       <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/Window.cs" />
       <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/MainWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SettingsWindow.cs" />
-      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Dropdown.cs" />
-      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DropdownOption.cs" />
-      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/WorkerConfig.cs" />
-      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/WorkerAbility.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/DrillHit.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/HitEffectSystem.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Data/Worker.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/DrillSystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/ClickEffect.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Element.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Windows/SandboxWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DropdownOption.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/Dropdown.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerPropertyWrapper.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/CustomProperty.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/DiscreteNumberInput.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerBouncesProperty.cs" />
+      <option value="$PROJECT_DIR$/Assets/DeepMiners/Config/WorkerConfig.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/FloatProperty.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerRadiusProperty.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/WorkerFactorySystem.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerDurabilityProperty.cs" />
+      <option value="$PROJECT_DIR$/Assets/UIScripts/UI/Components/WorkerFrequencyProperty.cs" />
       <option value="$PROJECT_DIR$/Assets/DeepMiners/Systems/Input/SandboxInputSystem.cs" />
     </changedPaths>
   </component>

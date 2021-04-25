@@ -17,6 +17,8 @@ namespace DeepMiners.UI
         [SerializeField] private SettingsWindow settingsWindow;
         [SerializeField] private Dropdown resolutionDropdown;
         [SerializeField] private Dropdown presetDropdown;
+        [SerializeField] private Dropdown customWorkerProperties;
+        
         
         protected override async Task OnInit()
         {
@@ -24,23 +26,28 @@ namespace DeepMiners.UI
             await System.UntilReady();
             Bind(resetButton, System.Reset);
             Bind(settingsButton, async () => await settingsWindow.Show());
-            await resolutionDropdown.SetUp(GenerateResolutionDropdowns());
-            await presetDropdown.SetUp(GeneratePresetDropdowns());
+            await resolutionDropdown.AddOptions(GenerateResolutionDropdowns());
+            await presetDropdown.AddOptions(GeneratePresetDropdowns());
+            customWorkerProperties.SetContext(System.GetCustomWorker);
         }
         
-        private IEnumerable<(string action, object context, bool selected, Func<object, Task> callback)> GenerateResolutionDropdowns ()
+        private IEnumerable<(string action, Func<object> context, bool selected, Func<object, Task> callback)> GenerateResolutionDropdowns ()
         {
             foreach (int2 size in System.GetAvailableSizes())
             {
-                yield return ($"{size.x}x{size.y}", size, size.Equals(System.SelectedBlockSize()), s => System.SetSize((int2)s));
+                yield return ($"{size.x}x{size.y}", () => size, size.Equals(System.SelectedBlockSize()), s => System.SetSize((int2)s));
             }
         }
         
-        private IEnumerable<(string action, object context, bool selected, Func<object, Task> callback)> GeneratePresetDropdowns ()
+        private IEnumerable<(string action, Func<object> context, bool selected, Func<object, Task> callback)> GeneratePresetDropdowns ()
         {
             foreach (WorkerConfig worker in System.GetAvailableWorkers())
             {
-                yield return ($"{worker.displayName}", worker, worker == System.ActiveWorker, s => System.SetActiveWorker((WorkerConfig)s));
+                yield return ($"{worker.displayName}", () => worker, worker == System.ActiveWorker, async s =>
+                {
+                    await System.SetActiveWorker((WorkerConfig) s);
+                    customWorkerProperties.gameObject.SetActive(System.IsCustomWorkerSelected());
+                });
             }
         }
     }

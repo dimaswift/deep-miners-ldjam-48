@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 namespace DeepMiners.UI
 {
-    public class Dropdown : MonoBehaviour
+    public class Dropdown : Element
     {
+        [SerializeField] private Element[] subElements;
         [SerializeField] private DropdownOption optionPrefab;
         [SerializeField] private GameObject container;
         
@@ -15,7 +16,10 @@ namespace DeepMiners.UI
 
         private void Awake()
         {
-            optionPrefab.gameObject.SetActive(false);
+            if (optionPrefab != null)
+            {
+                optionPrefab.gameObject.SetActive(false);
+            }
             GetComponent<Button>().onClick.AddListener(() =>
             {
                 container.SetActive(!container.activeSelf);
@@ -23,12 +27,20 @@ namespace DeepMiners.UI
             container.SetActive(false);
         }
 
-        public async Task SetUp(IEnumerable<(string action, object context, bool selected, Func<object, Task> callback)> items)
+        protected override void OnContextChanged(Func<object> context)
         {
-            foreach (DropdownOption dropdownOption in optionsElementsBuffer)
+            foreach (Element subElement in subElements)
             {
-                dropdownOption.gameObject.SetActive(false);
-                dropdownOption.SetSelected(false);
+                subElement.SetContext(context);
+            }
+        }
+
+        public async Task AddOptions(IEnumerable<(string action, Func<object> context, bool selected, Func<object, Task> callback)> items)
+        {
+            if (optionPrefab == null)
+            {
+                Debug.LogError($"Option Prefab is missing on {name}");
+                return;
             }
 
             int index = 0;
@@ -48,14 +60,15 @@ namespace DeepMiners.UI
                 {
                     optionElement = optionsElementsBuffer[index];
                 }
+                optionElement.SetContext(item.context);
                 optionElement.SetSelected(item.selected);
-                await optionElement.SetUp(item.context, item.action, async e =>
+                await optionElement.SetOptions(item.action, async e =>
                 {
                     foreach (DropdownOption other in optionsElementsBuffer)
                     {
                         other.SetSelected(other == optionElement);
                     }
-                    await item.callback(optionElement.Context);
+                    await item.callback(optionElement.ContextHandler());
                     
                 }, null);
                 index++;

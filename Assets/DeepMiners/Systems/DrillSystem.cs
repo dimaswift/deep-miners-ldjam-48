@@ -90,7 +90,7 @@ namespace Systems
                 {
                     float scaleMultiplier = math.max(scale.Value.x, scaleMultiplierThreshold);
                     
-                    float drillTime = math.clamp(math.remap(worker.LastHitTime, worker.LastHitTime + power.Rate * scaleMultiplier, 0, 1, time), 0, 1);
+                    float drillTime = math.clamp(math.remap(worker.LastHitTime, worker.LastHitTime + power.Frequency * scaleMultiplier, 0, 1, time), 0, 1);
                     
                     float3 visualDestination = origin + new float3(destination.Value.x, translation.Value.y, destination.Value.y);
 
@@ -109,7 +109,7 @@ namespace Systems
                         translation.Value = new float3(translation.Value.x, math.lerp(translation.Value.y, verticalLimit.Value + verticalLimit.FlightHeight, deltaTime * yLerpSpeedNoDrill), translation.Value.z);
                     }
 
-                    if (time - worker.LastHitTime > power.Rate * scaleMultiplier && inRange)
+                    if (time - worker.LastHitTime > power.Frequency * scaleMultiplier && inRange)
                     {
                         worker.LastHitTime = time;
                         float newScale = scale.Value.x - worker.SizeLossPerHit;
@@ -224,7 +224,7 @@ namespace Systems
                         buffer.SetComponent(worker.CurrentBlock, depth);
                         power.Hits++;
                         
-                        if (power.Hits >= worker.MaxConsecutiveHits)
+                        if (power.Hits >= worker.MaxBounces)
                         {
                             power.Hits = 0;
                             if (BlockUtil.GetClosestBlockOnSameLevel(rand, destination.Value, depthLookup, isDrilledLookup, map, checkMap, pointBuffer, size, out int2 next))
