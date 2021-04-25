@@ -73,6 +73,8 @@ namespace Systems
             
         }
 
+        public WorkerConfig GetConfig(WorkerType type) => Configs[(int) type];
+        
         public Entity CreateWorker(WorkerType type, int3 position)
         {
             WorkerConfig workerConfig = Configs[(int)type];
@@ -82,12 +84,19 @@ namespace Systems
             Entity block = blockGroupSystem.GetBlock(new int3() {x = position.x, y = 1, z = position.z});
              
             Entity entity = CreateBaseEntity(worldPos);
-            EntityManager.AddComponentData(entity, new Worker() { Type = type, CurrentBlock = block, LastDentTime = Time.DeltaTime, Damping = 0.5f } );
+            EntityManager.AddComponentData(entity, new Worker()
+            {
+                Type = type,
+                CurrentBlock = block,
+                LastDentTime = Time.DeltaTime,
+                Damping = 0.5f,
+                SizeLossPerHit = workerConfig.sizeLossPerHit
+            } );
             EntityManager.AddComponentData(entity, new MoveSpeed() { Value = workerConfig.moveSpeed });
             EntityManager.AddComponentData(entity, new DestinationPoint() { Value = position });
             EntityManager.AddComponentData(entity, new BlockGroupVisualOrigin() { Value = blockGroupSystem.VisualOrigin });
             EntityManager.AddComponentData(entity, new VerticalVelocity() { Value = 0 });
-            EntityManager.AddComponentData(entity, new VerticalLimit() { Value = -10, FlightHeight = Random.CreateFromIndex((uint)Time.ElapsedTime).NextInt(3, 6) });
+            EntityManager.AddComponentData(entity, new VerticalLimit() { Value = -10, FlightHeight = Random.CreateFromIndex((uint)Time.ElapsedTime).NextInt(5, 8) });
             EntityManager.AddComponentData(entity, new NonUniformScale() { Value = workerConfig.size });
             EntityManager.AddComponentData(entity, new DrillPower() { Amount = workerConfig.power, Rate = workerConfig.drillRate });
             EntityManager.AddComponentData(entity, new DrillAnimations() { Bounce = bounceCurve });

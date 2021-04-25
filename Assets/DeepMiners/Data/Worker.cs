@@ -8,5 +8,6 @@ namespace DeepMiners.Data
         public WorkerType Type;
         public float LastDentTime;
         public float Damping;
+        public float SizeLossPerHit;
     }
 }

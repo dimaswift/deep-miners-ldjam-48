@@ -38,3 +38,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hitEffect: {fileID: -7298366450038857159, guid: aaf62850bf93f6c4ab6af956029df61d, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 602bfd030cc41fc45b2af8f4b8c348f3, type: 3}
+  - {fileID: 8300000, guid: 602bfd030cc41fc45b2af8f4b8c348f3, type: 3}
+  - {fileID: 8300000, guid: 602bfd030cc41fc45b2af8f4b8c348f3, type: 3}
+  - {fileID: 8300000, guid: fcc47b99ed3ff8242bc62062834c2979, type: 3}
+  - {fileID: 8300000, guid: fcc47b99ed3ff8242bc62062834c2979, type: 3}
+  - {fileID: 8300000, guid: fcc47b99ed3ff8242bc62062834c2979, type: 3}
+  - {fileID: 8300000, guid: 25410d7db07befa438c0aa5b91165eea, type: 3}
+  - {fileID: 8300000, guid: 25410d7db07befa438c0aa5b91165eea, type: 3}
+  - {fileID: 8300000, guid: 25410d7db07befa438c0aa5b91165eea, type: 3}
+  - {fileID: 8300000, guid: 25410d7db07befa438c0aa5b91165eea, type: 3}

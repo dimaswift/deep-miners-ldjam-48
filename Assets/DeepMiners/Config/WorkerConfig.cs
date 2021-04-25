@@ -1,5 +1,6 @@
 ﻿using DeepMiners.Data;
 using DeepMiners.Prefabs;
+using Unity.Mathematics;
 using Unity.Rendering;
 using UnityEngine;
 
@@ -21,5 +22,8 @@ namespace DeepMiners.Config
         public float moveSpeed = 5;
 
         public float size = 0.5f;
+        public Color color = new Color(1,1,1,1);
+        [Range(0f, 1f)]
+        public float sizeLossPerHit = 0.01f;
     }
 }

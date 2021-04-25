@@ -113,5 +113,24 @@ namespace DeepMiners.Utils
             return point.x < size.x && point.z < size.y && point.y < currentDepth;
         }
 
+        public static int GetHighestNonEmptyBlockLevel(NativeHashMap<int3, Entity> map, int2 size, int currentDepth, int start)
+        {
+            for (int level = start; level < currentDepth; level++)
+            {
+                for (int x = 0; x < size.x; x++)
+                {
+                    for (int z = 0; z < size.y; z++)
+                    {
+                        if (map[new int3(x, level, z)] != Entity.Null)
+                        {
+                            return level;
+                        }
+                    }
+                }
+            }
+
+            return start;
+        }
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DeepMiners.Prefabs;
+using UnityEngine;
 
 namespace DeepMiners.Config
 {
@@ -7,5 +8,7 @@ namespace DeepMiners.Config
     {
         public WorkerConfig[] workers;
         public AnimationCurve drillBounceCurve;
+        public RenderMeshPrefab hitEffect;
+        public AudioClip[] hitSounds;
     }
 }

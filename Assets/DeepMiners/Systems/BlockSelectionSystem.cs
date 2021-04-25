@@ -111,6 +111,8 @@ namespace Systems
             
             int3? current = blockGroupSystem.ScreenToBlockPoint(1);
 
+            var depth = blockGroupSystem.CurrentDepth;
+            
             int2 groupSize = blockGroupSystem.GroupSize;
 
             Random random = Random.CreateFromIndex((uint)Time.ElapsedTime);
@@ -131,8 +133,9 @@ namespace Systems
 
                 var s = selection;
                 
-                Dependency = Job.WithReadOnly(map).WithReadOnly(isDrilled).WithCode(() => 
+                Dependency = Job.WithReadOnly(map).WithReadOnly(isDrilled).WithCode(() =>
                 {
+                    c.y = BlockUtil.GetHighestNonEmptyBlockLevel(map, groupSize, depth, 1);
                     if (BlockUtil.GetClosestBlockOnSameLevel(random, c, isDrilled, map, checkMap, checkList, groupSize, out int3 closest))
                     {
                         s[0] = closest;

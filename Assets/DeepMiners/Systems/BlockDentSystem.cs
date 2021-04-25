@@ -32,7 +32,7 @@ namespace Systems
                 translation.Value = new float3(translation.Value.x, y - (((1f - dent.Value) / 2) * size),
                     translation.Value.z);
                 scale.Value = new float3(scale.Value.x, size * dent.Value, scale.Value.z);
-                if (dent.Value < Dent.DestroyThreshold)
+                if (dent.Value <= 0)
                 {
                     commandBuffer.AddComponent(entity, new DestroyBlock());
                 }
