@@ -6,9 +6,4 @@ namespace DeepMiners.Data
     {
         public BlockType Type;
     }
-    
-    public struct IsBeingDrilling : IComponentData
-    {
-        
-    }
 }

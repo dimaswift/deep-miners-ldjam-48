@@ -22,7 +22,7 @@ namespace Systems
             return entity;
         }
         
-        protected virtual async Task LoadConfigs(TConfig[] configs)
+        protected virtual Task LoadConfigs(TConfig[] configs)
         {
             foreach (TConfig config in configs)
             {
@@ -33,6 +33,7 @@ namespace Systems
                 Configs[config.TypeIndex] = config;
                 MeshDescriptions[config.TypeIndex] = config.GetDescription();
             }
+            return Task.CompletedTask;
         }
     }
 }

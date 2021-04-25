@@ -29,7 +29,6 @@ namespace Systems
                     buffer.DestroyEntity(entity);
                 }
 
-             //   scale.Value = math.remap(0, effect.Duration, 0, 1, effect.Timer) * effect.Size;
                 float4 c = color.Value;
                 c.w = math.remap(0, effect.Duration, 0.5f, 0, effect.Timer);
                 color.Value = c;

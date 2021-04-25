@@ -2,7 +2,7 @@
 
 namespace DeepMiners.Data
 {
-    public struct BlockSelection : IComponentData
+    public struct IsBeingDrilled : IComponentData
     {
         
     }

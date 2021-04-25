@@ -6,8 +6,7 @@ namespace DeepMiners.Data
     {
         public Entity CurrentBlock;
         public WorkerType Type;
-        public float LastDentTime;
-        public float Damping;
+        public float LastHitTime;
         public float SizeLossPerHit;
         public int Radius;
         public int MaxConsecutiveHits;

@@ -27,7 +27,7 @@ namespace Systems
             
             workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
             commandBufferSystem = World.GetExistingSystem<EntityCommandBufferSystem>();
-            query = GetEntityQuery(typeof(DrillHit), typeof(Translation), typeof(Dent));
+            query = GetEntityQuery(typeof(DrillHit), typeof(Translation), typeof(Depth));
             drillConfig = await Addressables.LoadAssetAsync<DrillConfig>("configs/drill").Task;
             effectMesh = drillConfig.hitEffect.GetDescription();
             rotation = drillConfig.hitEffect.transform.rotation;
@@ -51,7 +51,7 @@ namespace Systems
 
             NativeArray<Entity> result = query.ToEntityArray(Allocator.Temp);
             NativeArray<Translation> positions = query.ToComponentDataArray<Translation>(Allocator.Temp);
-            NativeArray<Dent> dents = query.ToComponentDataArray<Dent>(Allocator.Temp);
+            NativeArray<Depth> dents = query.ToComponentDataArray<Depth>(Allocator.Temp);
             NativeArray<DrillHit> hits = query.ToComponentDataArray<DrillHit>(Allocator.Temp);
             
             for (int i = 0; i < result.Length; i++)
@@ -77,8 +77,6 @@ namespace Systems
                     AudioClip sound = drillConfig.hitSounds[math.clamp((int)(dents[i].Value * drillConfig.hitSounds.Length), 0, drillConfig.hitSounds.Length - 1)];
                     hitSource.PlayOneShot(sound);
                 }
-                
-              
             }
 
             positions.Dispose();

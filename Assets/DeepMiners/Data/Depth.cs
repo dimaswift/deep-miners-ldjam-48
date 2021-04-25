@@ -2,9 +2,8 @@
 
 namespace DeepMiners.Data
 {
-    public struct Dent : IComponentData
+    public struct Depth : IComponentData
     {
         public float Value;
-        public const float DestroyThreshold = 0.1f;
     }
 }

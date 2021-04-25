@@ -1,10 +1,8 @@
 ﻿using System.Threading.Tasks;
 using DeepMiners.Data;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Systems
 {
@@ -35,11 +33,11 @@ namespace Systems
                 return;
             }
 
-            float dt = Time.DeltaTime;
-            float s = size;
+            float deltaTime = Time.DeltaTime;
+            float blockSize = size;
+            float3 origin = groupSystem.VisualOrigin;
 
-            Dependency = Entities.ForEach((Entity entity, 
-                BlockGroupVisualOrigin origin, 
+            Dependency = Entities.ForEach((Entity entity,
                 MoveSpeed speed,
                 DestinationPoint destination,
                 ref Translation translation) =>
@@ -47,11 +45,11 @@ namespace Systems
 
                 int2 point = destination.Value;
                 
-                float3 finalPos = origin.Value + new float3(point.x, translation.Value.y, point.y) * s;
+                float3 finalPos = origin + new float3(point.x, translation.Value.y, point.y) * blockSize;
 
                 float actualSpeed = speed.Value;
                 
-                float3 interpolated = math.lerp(translation.Value, finalPos, dt * actualSpeed);
+                float3 interpolated = math.lerp(translation.Value, finalPos, deltaTime * actualSpeed);
 
                 interpolated.y = translation.Value.y;
 
@@ -60,7 +58,6 @@ namespace Systems
             }).Schedule(Dependency);
             
             commandBufferSystem.AddJobHandleForProducer(Dependency);
-            
         }
     }
 }

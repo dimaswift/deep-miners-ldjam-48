@@ -3,6 +3,5 @@
     public enum WorkerType
     {
         ShovelDigger = 0,
-        
     }
 }

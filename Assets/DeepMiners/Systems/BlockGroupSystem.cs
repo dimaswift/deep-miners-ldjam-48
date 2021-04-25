@@ -112,9 +112,7 @@ namespace Systems
             EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(blockSize, 20, blockSize) });
             EntityManager.AddComponentData(entity, new Block() { Type = type });
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
-            EntityManager.AddComponentData(entity, new BlockGroupVisualOrigin() { Value = visualOrigin });
-            EntityManager.AddComponentData(entity, new VerticalVelocity() { Value = 0 });
-            EntityManager.AddComponentData(entity, new Dent() { Value = 0 });
+            EntityManager.AddComponentData(entity, new Depth() { Value = 0 });
             RenderMeshUtility.AddComponents(entity, EntityManager, MeshDescriptions[(int)type]);
             
             return entity;
