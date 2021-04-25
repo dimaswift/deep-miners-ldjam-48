@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   prefab: {fileID: 8699068761829067125, guid: e82a05f7f96944d4ca6eaac34219162b, type: 3}
+  power: 0.05
+  moveSpeed: 5

@@ -6,6 +6,6 @@ namespace DeepMiners.Data
     public struct VerticalLimit : IComponentData
     {
         public float Value;
-        public float Bounciness;
+        public float FlightHeight;
     }
 }

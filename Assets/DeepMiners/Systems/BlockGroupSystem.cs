@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using DeepMiners.Config;
 using DeepMiners.Data;
@@ -36,12 +37,23 @@ namespace Systems
         private int2 size;
 
         public JobHandle? ModificationJob;
+
+        private readonly List<BlockType> typePool = new List<BlockType>();
         
         private int currentDepth;
         
         protected override async void OnCreate()
         {
             config = await Addressables.LoadAssetAsync<BlockGroupConfig>("configs/defaultBlockGroup").Task;
+            
+            foreach (BlockConfig configBlock in config.blocks)
+            {
+                for (int i = 0; i < configBlock.weight; i++)
+                {
+                    typePool.Add(configBlock.type);
+                }
+            }
+            
             size = config.size;
             blocksMap = new NativeHashMap<int3, Entity>(config.maxDepth * config.size.x * config.size.x,
                 Allocator.Persistent);
@@ -52,6 +64,8 @@ namespace Systems
             {
                 await Task.Yield();
             }
+
+
             
             IsReady = true;
         }
@@ -167,7 +181,7 @@ namespace Systems
                         var point = new int3(x, level, z);
                         if (level > 0)
                         {
-                            BlockType type = (BlockType) random.NextInt(0, (int) BlockType.BlocksAmount);
+                            BlockType type = typePool[random.NextInt(0, typePool.Count - 1)];
                             blocksMap.Add(point, CreateBlock(type, point));
                         }
                         else

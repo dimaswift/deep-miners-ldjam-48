@@ -1,14 +1,19 @@
-﻿using DeepMiners.Data;
+﻿using System;
+using DeepMiners.Data;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
+using Random = Unity.Mathematics.Random;
 
 namespace DeepMiners.Utils
 {
     public static class BlockUtil
     {
-        private static void CheckNeighbourBlocks(int3 point, int3 origin, int2 size, NativeHashMap<int3, Entity> map, NativeList<int3> fill, NativeHashMap<int3, int> checkMap)
+
+        private static void CheckNeighbourBlocks(Random random, int3 point, int3 origin, int2 size, NativeHashMap<int3, Entity> map, NativeList<int3> fill, NativeHashMap<int3, int> checkMap)
         {
+            var r = random.NextInt(0, 3);
+            
             if (checkMap.ContainsKey(point))
             {
                 return;
@@ -28,33 +33,56 @@ namespace DeepMiners.Utils
             
             checkMap.Add(point, -1);
 
-            CheckNeighbourBlocks(new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
+            if (r == 0)
+            {
+                CheckNeighbourBlocks(random, new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
 
-            CheckNeighbourBlocks(new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
+                CheckNeighbourBlocks(random,new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
 
-            CheckNeighbourBlocks(new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
+                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
 
-            CheckNeighbourBlocks(new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
+                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
+            }
+            else if (r == 1)
+            {
+                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
+                
+                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
+                
+                CheckNeighbourBlocks(random,new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
+                
+                CheckNeighbourBlocks(random,new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
+            }
+            else
+            {
+                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z + 1), origin,  size, map, fill,checkMap);
+                
+                CheckNeighbourBlocks(random,new int3(point.x + 1, point.y, point.z), origin, size, map, fill, checkMap);
+
+                CheckNeighbourBlocks(random,new int3(point.x, point.y, point.z - 1), origin, size, map,fill, checkMap);
+                
+                CheckNeighbourBlocks(random,new int3(point.x - 1, point.y, point.z), origin, size, map, fill,checkMap);
+            }
         }
         
         public static float3 ToWorld(int3 blockPoint, float3 visualOrigin, float blockSize) =>
             visualOrigin + new float3(blockPoint.x, -blockPoint.y, blockPoint.z) * blockSize;
         
-        public static bool GetClosestBlockOnSameLevel(int3 point, NativeHashMap<int3, Entity> map, NativeHashMap<int3, int> checkMap, NativeList<int3> list, int2 size, out int3 result)
+        public static bool GetClosestBlockOnSameLevel<T>(Random random, int3 point, ComponentDataFromEntity<T> filter, NativeHashMap<int3, Entity> map, NativeHashMap<int3, int> checkMap, NativeList<int3> list, int2 size, out int3 result) where T : struct, IComponentData
         {
             checkMap.Clear();
             result = new int3();
-            CheckNeighbourBlocks(point, point, size, map, list, checkMap);
+            CheckNeighbourBlocks(random,point, point, size, map, list, checkMap);
         
             int closest = int.MaxValue;
             for (int i = 0; i < list.Length; i++)
             {
                 int3 p = list[i];
-                int dist = math.abs(point.x - p.x) + math.abs(point.z - p.z);
-                if (dist < closest)
+                if (!filter.HasComponent(map[p]))
                 {
-                    closest = dist;
+                    closest = p.x;
                     result = p;
+                    break;
                 }
             }
 
@@ -84,5 +112,6 @@ namespace DeepMiners.Utils
             }
             return point.x < size.x && point.z < size.y && point.y < currentDepth;
         }
+
     }
 }

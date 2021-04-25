@@ -22,7 +22,9 @@ namespace Systems
         private EntityCommandBufferSystem commandBufferSystem;
 
         private RenderMeshDescription selectionRenderer;
-
+        private WorkerFactorySystem workerFactorySystem;
+        private NativeArray<int3> selection;
+        
         private Entity debugEntity;
  
         private bool isReady;
@@ -31,9 +33,11 @@ namespace Systems
         protected override async void OnCreate()
         {
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
-
+            workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
             commandBufferSystem = World.GetOrCreateSystem<EntityCommandBufferSystem>();
-            
+
+            selection = new NativeArray<int3>(1, Allocator.Persistent) {[0] = new int3(-1, -1, -1)};
+
             while (blockGroupSystem.IsReady == false)
             {
                 await Task.Yield();
@@ -41,12 +45,14 @@ namespace Systems
             
             GameObject selectionRendererPrefab = await Addressables.LoadAssetAsync<GameObject>("prefabs/selection").Task;
             selectionRenderer = selectionRendererPrefab.GetComponent<RenderMeshPrefab>().GetDescription();
-
-            debugEntity = CreateDebugEntity();
-
-
+            
             isReady = true;
 
+        }
+
+        protected override void OnDestroy()
+        {
+            selection.Dispose();
         }
 
         private Entity CreateDebugEntity()
@@ -88,24 +94,30 @@ namespace Systems
             }
 
             Dependency = blockGroupSystem.WaitForModificationJob(Dependency);
+            
+            if (selection[0].x >= 0)
+            {
+                workerFactorySystem.CreateWorker(WorkerType.ShovelDigger, selection[0]);
+
+                selection[0] = new int3(-1, -1, -1);
+            }
+            
+            if (!Input.GetMouseButtonDown(0))
+            {
+                return;
+            }
 
             var map = blockGroupSystem.BlocksMap;
-
-            int3? hoveringBlock = blockGroupSystem.ScreenToBlockPoint(1);
-
-            EntityCommandBuffer buffer = commandBufferSystem.CreateCommandBuffer();
             
             int3? current = blockGroupSystem.ScreenToBlockPoint(1);
 
             int2 groupSize = blockGroupSystem.GroupSize;
 
-            int currentDepth = blockGroupSystem.CurrentDepth;
+            Random random = Random.CreateFromIndex((uint)Time.ElapsedTime);
 
             if (current.HasValue)
             {
                 int3 c = current.Value;
-                
-                NativeArray<int3> closestResult = new NativeArray<int3>(1, Allocator.TempJob) {[0] = new int3(-1, -1, -1)};
 
                 NativeHashMap<int3, int> checkMap = new
                     NativeHashMap<int3, int>(blockGroupSystem.GroupSize.x * blockGroupSystem.GroupSize.y,
@@ -115,33 +127,19 @@ namespace Systems
                     NativeList<int3>(blockGroupSystem.GroupSize.x * blockGroupSystem.GroupSize.y,
                         Allocator.TempJob);
                 
+                var isDrilled = GetComponentDataFromEntity<IsBeingDrilling>();
+
+                var s = selection;
                 
-                
-                Dependency = Job.WithReadOnly(map).WithCode(() => 
+                Dependency = Job.WithReadOnly(map).WithReadOnly(isDrilled).WithCode(() => 
                 {
-                    if (BlockUtil.GetClosestBlockOnSameLevel(c, map, checkMap, checkList, groupSize, out int3 closest))
+                    if (BlockUtil.GetClosestBlockOnSameLevel(random, c, isDrilled, map, checkMap, checkList, groupSize, out int3 closest))
                     {
-                        closestResult[0] = closest;
+                        s[0] = closest;
                     }
 
                 }).Schedule(Dependency);
-
-                float3 origin = blockGroupSystem.VisualOrigin;
-                float blockSize = blockGroupSystem.BlockSize;
-
-                Entity e = debugEntity;
                 
-                Dependency = Job.WithReadOnly(closestResult).WithCode(() =>
-                {
-                    if (closestResult[0].x >= 0)
-                    {
-                        buffer.SetComponent(e, new Translation() { Value = BlockUtil.ToWorld(closestResult[0], origin, blockSize)});
-                    }
-
-                }).Schedule(Dependency);
-
-                closestResult.Dispose(Dependency);
-
                 checkMap.Dispose(Dependency);
 
                 checkList.Dispose(Dependency);
@@ -149,34 +147,7 @@ namespace Systems
                 commandBufferSystem.AddJobHandleForProducer(Dependency);
             }
             
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (hoveringBlock.HasValue)
-                {
-                    int3 b = hoveringBlock.Value;
-
-                    Dependency = blockGroupSystem.FindBlock(hoveringBlock.Value, out var res, Dependency);
-
-                    EntityCommandBuffer newBuff = commandBufferSystem.CreateCommandBuffer();
-                    
-                    Dependency = Job.WithCode(() =>
-                    {
-                        if (res[0] != Entity.Null)
-                        {
-                            newBuff.AddComponent(res[0], new Dent() {Value = 0.75f });
-                        }
-
-                    }).Schedule(Dependency);
-
-                   // Dependency = blockGroupSystem.DestroyBlock(b, Dependency);
-                    
-                    commandBufferSystem.AddJobHandleForProducer(Dependency);
-
-                    res.Dispose(Dependency);
-
-                  
-                }
-            }
+           
 
         }
 

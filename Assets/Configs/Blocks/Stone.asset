@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   meshPrefab: {fileID: 1018116501543863546, guid: 8fb9201b0a0c0d746aecbd1d5f5e0ce9, type: 3}
+  weight: 100

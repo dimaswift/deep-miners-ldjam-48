@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 291125936389454517}
   - component: {fileID: 1018116501543863546}
   m_Layer: 0
-  m_Name: IronPrefab
+  m_Name: StonePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e7e8e2aad351fb4181d1b0e9034022b, type: 2}
+  - {fileID: 2100000, guid: 2e25558a26b363f4a9a4bd4bbbef7520, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
