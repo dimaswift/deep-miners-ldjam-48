@@ -1,0 +1,70 @@
+<linker>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.LegacyResourcesProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.RectTransform" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AudioClip" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
+    <type fullname="UnityEngine.UI.Image" preserve="all" />
+    <type fullname="UnityEngine.UI.Button" preserve="all" />
+    <type fullname="UnityEngine.UI.Slider" preserve="all" />
+    <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
+    <type fullname="UnityEngine.UI.VerticalLayoutGroup" preserve="all" />
+  </assembly>
+  <assembly fullname="DeepMiners.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="DeepMiners.UI.FloatProperty" preserve="all" />
+    <type fullname="DeepMiners.UI.MainWindow" preserve="all" />
+    <type fullname="DeepMiners.UI.ClickEffect" preserve="all" />
+    <type fullname="DeepMiners.UI.Dropdown" preserve="all" />
+    <type fullname="DeepMiners.UI.WorkerDurabilityProperty" preserve="all" />
+    <type fullname="DeepMiners.UI.WorkerBouncesProperty" preserve="all" />
+    <type fullname="DeepMiners.UI.WorkerFrequencyProperty" preserve="all" />
+    <type fullname="DeepMiners.UI.WorkerPowerProperty" preserve="all" />
+    <type fullname="DeepMiners.UI.SandboxWindow" preserve="all" />
+    <type fullname="DeepMiners.UI.SettingsWindow" preserve="all" />
+    <type fullname="DeepMiners.UI.DropdownOption" preserve="all" />
+    <type fullname="DeepMiners.UI.WorkerRadiusProperty" preserve="all" />
+    <type fullname="DeepMiners.UI.DiscreteNumberInput" preserve="all" />
+  </assembly>
+  <assembly fullname="DeepMiners, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="DeepMiners.Config.DrillConfig" preserve="all" />
+    <type fullname="DeepMiners.Config.BlockConfig" preserve="all" />
+    <type fullname="DeepMiners.Prefabs.RenderMeshPrefab" preserve="all" />
+    <type fullname="DeepMiners.Config.WorkerConfig" preserve="all" />
+    <type fullname="DeepMiners.Config.BlockGroupConfig" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
+    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEditor.MonoScript" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
+    <type fullname="UnityEngine.Canvas" preserve="all" />
+    <type fullname="UnityEngine.CanvasGroup" preserve="all" />
+  </assembly>
+</linker>

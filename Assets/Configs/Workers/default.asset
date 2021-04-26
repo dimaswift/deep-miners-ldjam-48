@@ -16,7 +16,7 @@ MonoBehaviour:
     m_AssetGUID: e82a05f7f96944d4ca6eaac34219162b
     m_SubObjectName: 
     m_SubObjectType: 
-  displayName: Default
+  displayName: Original
   ability: 0
   power: 0.1
   frequency: 0.8
