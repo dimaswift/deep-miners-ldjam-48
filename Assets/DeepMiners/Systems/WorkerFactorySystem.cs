@@ -80,7 +80,7 @@ namespace Systems
                 Radius = workerConfig.radius,
                 MaxBounces = workerConfig.maxBounces,
                 MarkDuration = workerConfig.markDuration,
-                Timer = 0.5f,
+                Timer = 0.75f,
                 Color = new float4(color.r, color.g, color.b, color.a)
             } );
 
