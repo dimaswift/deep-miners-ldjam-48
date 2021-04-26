@@ -53,6 +53,48 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 41f749968aa7dd446a318cf2827f1208
+    m_Address: Assets/Prefabs/Blocks/DirtPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 28137a197804b2546b50c0cd57525bf0
+    m_Address: Assets/Prefabs/Blocks/IronPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 8fb9201b0a0c0d746aecbd1d5f5e0ce9
+    m_Address: Assets/Prefabs/Blocks/StonePrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e82a05f7f96944d4ca6eaac34219162b
+    m_Address: Assets/Prefabs/Workers/ShovelDiggerPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 655d889b1ac6e464cb9c4bb4a21467cd
+    m_Address: Assets/Prefabs/Workers/Sphere.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 66a6794616e679a4eb1acf27e5a52946
+    m_Address: Assets/Prefabs/Workers/Goo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2ae74c4bf8b8496468517c3ff00d5817
+    m_Address: Assets/Prefabs/Workers/BubbleGum.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6ef672568dbac51449ca73a5aefa39d8, type: 2}
   m_SchemaSet:

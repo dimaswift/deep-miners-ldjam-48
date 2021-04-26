@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a2fd4fa4aa4469ae9ed1993d988924, type: 3}
-  m_Name: red
+  m_Name: Goo
   m_EditorClassIdentifier: 
-  displayName: Red
-  type: 0
-  prefab: {fileID: 8699068761829067125, guid: e82a05f7f96944d4ca6eaac34219162b, type: 3}
-  power: 0.1
-  drillRate: 0.5
+  prefab:
+    m_AssetGUID: 66a6794616e679a4eb1acf27e5a52946
+    m_SubObjectName: 
+    m_SubObjectType: 
+  displayName: Goo
+  ability: 0
+  power: 0.05
+  frequency: 1
   moveSpeed: 5
   size: 1
-  color: {r: 1, g: 0.045656458, b: 0, a: 1}
-  sizeLossPerHit: 0.05
-  radius: 5
-  maxConsecutiveHits: 1
+  color: {r: 0.14833197, g: 1, b: 0, a: 1}
+  sizeLossPerHit: 0.5
+  radius: 3
+  maxBounces: 1
+  markDuration: 1

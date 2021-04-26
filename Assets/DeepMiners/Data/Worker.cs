@@ -7,9 +7,11 @@ namespace DeepMiners.Data
     {
         public Entity CurrentBlock;
         public WorkerAbility Ability;
-        public float LastHitTime;
+        public float Frequency;
+        public float Timer;
         public float SizeLossPerHit;
         public int Radius;
+        public float MarkDuration;
         public int MaxBounces;
         public float4 Color;
     }

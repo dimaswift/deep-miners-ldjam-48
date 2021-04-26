@@ -8,6 +8,7 @@ namespace DeepMiners.Config
     {
         public WorkerConfig[] workers;
         public AnimationCurve drillBounceCurve;
+        public AnimationCurve drillMoveCurve;
         public RenderMeshPrefab hitEffect;
         public AudioClip[] hitSounds;
     }

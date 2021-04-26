@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockScale: 1
   size:
-    x: 64
-    y: 64
+    x: 32
+    y: 32
   blocks:
   - {fileID: 11400000, guid: 6219a49253d698042979d071880dc4da, type: 2}
   - {fileID: 11400000, guid: 999da3364d7c57344869b6e68f21e9ae, type: 2}

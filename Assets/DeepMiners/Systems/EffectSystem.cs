@@ -1,4 +1,5 @@
 ﻿using DeepMiners.Data;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -9,8 +10,12 @@ namespace Systems
     {
         private EntityCommandBufferSystem commandBufferSystem;
 
+        private EntityQuery blocksQuery;
+        
+        
         protected override void OnCreate()
         {
+            blocksQuery = GetEntityQuery(typeof(Translation));
             commandBufferSystem = World.GetExistingSystem<EntityCommandBufferSystem>();
         }
         
@@ -19,11 +24,19 @@ namespace Systems
             float delta = Time.DeltaTime;
 
             EntityCommandBuffer buffer = commandBufferSystem.CreateCommandBuffer();
+
+            var blocks = GetComponentDataFromEntity<Translation>(true);
             
-            Entities.ForEach((Entity entity, ref Scale scale, ref BlockColor color, ref Effect effect) =>
+            Entities.WithReadOnly(blocks).ForEach((Entity entity, ref Scale scale, ref BlockColor color, ref Effect effect) =>
             {
                 effect.Timer += delta;
 
+                Translation v = blocks[entity];
+                
+                v.Value = blocks[effect.Block].Value + new float3(0, 0.01f ,0);
+                
+                buffer.SetComponent(entity, v);
+                
                 if (effect.Timer >= effect.Duration)
                 {
                     buffer.DestroyEntity(entity);
@@ -34,6 +47,7 @@ namespace Systems
                 color.Value = c;
 
             }).Schedule();
+
         }
     }
 }

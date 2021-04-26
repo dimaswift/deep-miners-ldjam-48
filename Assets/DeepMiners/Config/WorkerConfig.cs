@@ -1,8 +1,10 @@
-﻿using DeepMiners.Data;
+﻿using System.Threading.Tasks;
+using DeepMiners.Data;
+using DeepMiners.Extensions;
 using DeepMiners.Prefabs;
-using Unity.Mathematics;
 using Unity.Rendering;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace DeepMiners.Config
 {
@@ -11,23 +13,17 @@ namespace DeepMiners.Config
     {
         public string displayName = "Worker";
         public WorkerAbility ability;
-        
-        public RenderMeshPrefab prefab;
         public override int TypeIndex => (int) ability;
-        public override RenderMeshDescription GetDescription() => prefab.GetDescription();
-
         public float power = 0.5f;
-
-        
         public float frequency = 0.5f;
-        public float moveSpeed = 5;
 
         public float size = 0.5f;
-        public Color color = new Color(1,1,1,1);
+        public Color Color { get; set; }
 
         public float sizeLossPerHit = 0.01f;
 
         public int radius = 1;
         public int maxBounces = 3;
+        public float markDuration = 1;
     }
 }

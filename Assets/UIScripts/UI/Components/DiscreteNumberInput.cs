@@ -20,8 +20,8 @@ namespace DeepMiners.UI
         
         protected override bool ValidateValue(ref int v)
         {
-            base.ValidateValue(ref v);
             v = Mathf.Clamp(v, min, max);
+            base.ValidateValue(ref v);
             return true;
         }
 

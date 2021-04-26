@@ -72,12 +72,6 @@ namespace Systems
                 blocksMap.Dispose();
             }
         }
-
-        protected override async Task LoadConfigs(BlockConfig[] configs)
-        {
-            await base.LoadConfigs(configs);
-        }
-
         public int2? ScreenToBlockPoint(int level)
         {
             var plane = new Plane(Vector3.up, (Vector3)VisualOrigin + new Vector3(0, -level + 0.5f, 0) * config.blockScale);
@@ -105,7 +99,7 @@ namespace Systems
         {
             float scale = config.blockScale;
             Entity entity = CreateBaseEntity(VisualOrigin + new float3(position.x, 0, position.y) * scale);
-            EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(scale, GroupSize.x, scale) });
+            EntityManager.AddComponentData(entity, new NonUniformScale() { Value = new float3(scale, GroupSize.x * 2, scale) });
             EntityManager.AddComponentData(entity, new Block() { Type = type });
             EntityManager.AddComponentData(entity, new BlockPoint() { Value = position });
             EntityManager.AddComponentData(entity, new Depth() { Value = 0 });

@@ -15,26 +15,52 @@ MonoBehaviour:
   workers:
   - {fileID: 11400000, guid: 8f99d5c6f4d9a0447b9d240e4bf7dfac, type: 2}
   - {fileID: 11400000, guid: ebd2160d822ebdf4f863158dc88035d7, type: 2}
+  - {fileID: 11400000, guid: c607b5d79afb015408881547e1f41fbb, type: 2}
+  - {fileID: 11400000, guid: dfcd056ff58540e4583ccb642b7e0caa, type: 2}
   drillBounceCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: -0.0011959649
       value: 0
-      inSlope: 0.894387
-      outSlope: 0.894387
+      inSlope: 3.7914922
+      outSlope: 3.7914922
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.022726675
+      outWeight: 0.020366758
     - serializedVersion: 3
-      time: 1.0003662
-      value: 0.0018463135
-      inSlope: -1.063571
-      outSlope: -1.063571
+      time: 1
+      value: 0
+      inSlope: -4.2428784
+      outSlope: -4.2428784
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.022723524
+      inWeight: 0.022973958
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  drillMoveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.08452273
+      outSlope: -0.08452273
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.044311374
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

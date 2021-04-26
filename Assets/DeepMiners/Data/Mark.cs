@@ -3,10 +3,12 @@ using Unity.Mathematics;
 
 namespace DeepMiners.Data
 {
-    public struct DrillHit : IComponentData
+    public struct Mark : IComponentData
     {
-        public WorkerAbility WorkerAbility;
         public float4 Color;
         public float Power;
+        public float Duration;
+        public Entity Block;
+
     }
 }

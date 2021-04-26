@@ -11,11 +11,10 @@ using UnityEngine.AddressableAssets;
 
 namespace Systems
 {
-    public class HitEffectSystem : SystemBase
+    public class MarkEffectSystem : SystemBase
     {
         private DrillConfig drillConfig;
         private RenderMeshDescription effectMesh;
-        private WorkerFactorySystem workerFactorySystem;
         private EntityCommandBufferSystem commandBufferSystem;
         private quaternion rotation;
         private EntityQuery query;
@@ -25,10 +24,8 @@ namespace Systems
         
         protected override async void OnCreate()
         {
-            
-            workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
             commandBufferSystem = World.GetExistingSystem<EntityCommandBufferSystem>();
-            query = GetEntityQuery(typeof(DrillHit), typeof(Translation), typeof(Depth));
+            query = GetEntityQuery(typeof(Mark), typeof(Translation), typeof(Depth));
             drillConfig = await Addressables.LoadAssetAsync<DrillConfig>("configs/drill").Task;
             effectMesh = drillConfig.hitEffect.GetDescription();
             rotation = drillConfig.hitEffect.transform.rotation;
@@ -53,12 +50,15 @@ namespace Systems
             NativeArray<Entity> result = query.ToEntityArray(Allocator.Temp);
             NativeArray<Translation> positions = query.ToComponentDataArray<Translation>(Allocator.Temp);
             NativeArray<Depth> dents = query.ToComponentDataArray<Depth>(Allocator.Temp);
-            NativeArray<DrillHit> hits = query.ToComponentDataArray<DrillHit>(Allocator.Temp);
-            
+            NativeArray<Mark> marks = query.ToComponentDataArray<Mark>(Allocator.Temp);
+
             for (int i = 0; i < result.Length; i++)
             {
-                float4 c = hits[i].Color;
+                Mark mark = marks[i];
                 Entity entity = result[i];
+
+                float4 c = marks[i].Color;
+             
                 Color color = new Color(c.x, c.y, c.z, c.w);
                 Entity effect = buffer.CreateEntity();
                 float3 pos = positions[i].Value;
@@ -66,13 +66,17 @@ namespace Systems
                 buffer.AddComponent(effect, new Translation() { Value = pos });
                 buffer.AddComponent(effect, new LocalToWorld());
                 buffer.AddComponent(effect, new Rotation() { Value = rot });
-                buffer.AddComponent(effect, new Effect() { Timer = 0, Duration = 0.25f, Size = 1f});
+                buffer.AddComponent(effect, new Effect() { Timer = 0, Duration = mark.Duration, Size = 1f, Block = mark.Block });
                 buffer.AddComponent(effect, new Scale() { Value = 1 });
-                buffer.AddComponent(effect, new BlockColor() { Value = new float4(color.r, color.g, color.b, color.a) }); 
+                buffer.AddComponent(effect, new BlockColor() { Value = new float4(color.r, color.g, color.b, color.a * mark.Power) }); 
+                buffer.AddComponent(effect, new BlockGlow() { Value = new float4(color.r, color.g, color.b, color.a * mark.Power) });
+
                 
-                buffer.RemoveComponent<DrillHit>(entity);
                 RenderMeshUtility.AddComponents(effect, buffer, effectMesh);
 
+                buffer.SetComponent(entity, mark);
+                buffer.RemoveComponent<Mark>(entity);
+                
                 if (Time.ElapsedTime - lastSoundPlayTime > 0.05f)
                 {
                     lastSoundPlayTime = (float)Time.ElapsedTime;
@@ -84,7 +88,7 @@ namespace Systems
             positions.Dispose();
             dents.Dispose();
             result.Dispose();
-            hits.Dispose();
+            marks.Dispose();
         }
     }
 }

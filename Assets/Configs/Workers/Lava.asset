@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a2fd4fa4aa4469ae9ed1993d988924, type: 3}
-  m_Name: default
+  m_Name: Lava
   m_EditorClassIdentifier: 
   prefab:
-    m_AssetGUID: e82a05f7f96944d4ca6eaac34219162b
+    m_AssetGUID: 655d889b1ac6e464cb9c4bb4a21467cd
     m_SubObjectName: 
     m_SubObjectType: 
-  displayName: Default
+  displayName: Lava
   ability: 0
   power: 0.1
-  frequency: 0.8
+  frequency: 0.5
+  moveSpeed: 5
   size: 1
-  sizeLossPerHit: 0.1
+  color: {r: 1, g: 0, b: 0.6756983, a: 1}
+  sizeLossPerHit: 0.15
   radius: 3
-  maxBounces: 3
-  markDuration: 1
+  maxBounces: 5
+  markDuration: 3

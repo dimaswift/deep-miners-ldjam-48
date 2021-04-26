@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a2fd4fa4aa4469ae9ed1993d988924, type: 3}
-  m_Name: default
+  m_Name: BubleGum
   m_EditorClassIdentifier: 
   prefab:
-    m_AssetGUID: e82a05f7f96944d4ca6eaac34219162b
+    m_AssetGUID: 2ae74c4bf8b8496468517c3ff00d5817
     m_SubObjectName: 
     m_SubObjectType: 
-  displayName: Default
+  displayName: Buble Gum
   ability: 0
-  power: 0.1
-  frequency: 0.8
+  power: 0.2
+  frequency: 0.75
   size: 1
-  sizeLossPerHit: 0.1
-  radius: 3
+  sizeLossPerHit: 0.15
+  radius: 2
   maxBounces: 3
   markDuration: 1

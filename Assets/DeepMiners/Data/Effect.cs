@@ -7,5 +7,6 @@ namespace DeepMiners.Data
         public float Timer;
         public float Duration;
         public float Size;
+        public Entity Block;
     }
 }

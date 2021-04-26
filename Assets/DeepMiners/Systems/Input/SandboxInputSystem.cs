@@ -4,6 +4,7 @@ using Systems;
 using DeepMiners.Config;
 using DeepMiners.Data;
 using DeepMiners.Systems.Input.Windows;
+using DeepMiners.Utils;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -43,6 +44,11 @@ namespace DeepMiners.Systems.Input
             {
                 await Task.Yield();
             }
+        }
+
+        protected override void OnDestroy()
+        {
+            StorageUtil.Serialize(customWorker);
         }
 
         public int2 SelectedBlockSize()
@@ -92,9 +98,10 @@ namespace DeepMiners.Systems.Input
         {
             blockGroupSystem = World.GetOrCreateSystem<BlockGroupSystem>();
             workerFactorySystem = World.GetExistingSystem<WorkerFactorySystem>();
-
             customWorker = Object.Instantiate(workerFactorySystem.DefaultWorker);
+            StorageUtil.DeserializeScriptable(customWorker);
             customWorker.displayName = "Manual";
+            await workerFactorySystem.Register(customWorker);
             
             await SetActiveWorker(customWorker);
             while (blockGroupSystem.IsReady == false)
@@ -150,6 +157,7 @@ namespace DeepMiners.Systems.Input
                 if (current.HasValue && !prevWorkerSpawnPoint.Equals(current.Value))
                 {
                     int2 c = current.Value;
+                    
                     workerFactorySystem.CreateWorker(ActiveWorker, c);
                     prevWorkerSpawnPoint = current.Value;
                 }

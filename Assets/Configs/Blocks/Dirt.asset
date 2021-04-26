@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ac556a0e10491f829d95df85dde2c4, type: 3}
   m_Name: Dirt
   m_EditorClassIdentifier: 
+  prefab:
+    m_AssetGUID: 41f749968aa7dd446a318cf2827f1208
+    m_SubObjectName: 
+    m_SubObjectType: 
   type: 0
   meshPrefab: {fileID: 1018116501543863546, guid: 41f749968aa7dd446a318cf2827f1208, type: 3}
+  weight: 1

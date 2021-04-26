@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ac556a0e10491f829d95df85dde2c4, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
+  prefab:
+    m_AssetGUID: 8fb9201b0a0c0d746aecbd1d5f5e0ce9
+    m_SubObjectName: 
+    m_SubObjectType: 
   type: 1
   meshPrefab: {fileID: 1018116501543863546, guid: 8fb9201b0a0c0d746aecbd1d5f5e0ce9, type: 3}
   weight: 100

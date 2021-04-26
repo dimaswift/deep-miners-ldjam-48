@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ac556a0e10491f829d95df85dde2c4, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
+  prefab:
+    m_AssetGUID: 28137a197804b2546b50c0cd57525bf0
+    m_SubObjectName: 
+    m_SubObjectType: 
   type: 2
   meshPrefab: {fileID: 1018116501543863546, guid: 28137a197804b2546b50c0cd57525bf0, type: 3}
   weight: 1

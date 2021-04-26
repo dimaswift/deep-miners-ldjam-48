@@ -7,5 +7,6 @@ namespace DeepMiners.Data
     public struct WorkerAnimations : IComponentData
     {
         public BlobAssetReference<KeyframeBlobArray> Bounce;
+        public BlobAssetReference<KeyframeBlobArray> Move;
     }
 }
