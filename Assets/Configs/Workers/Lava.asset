@@ -18,12 +18,10 @@ MonoBehaviour:
     m_SubObjectType: 
   displayName: Lava
   ability: 0
-  power: 0.1
-  frequency: 0.5
-  moveSpeed: 5
+  power: 0.05
+  frequency: 0.75
   size: 1
-  color: {r: 1, g: 0, b: 0.6756983, a: 1}
-  sizeLossPerHit: 0.15
+  sizeLossPerHit: 0.05
   radius: 3
-  maxBounces: 5
-  markDuration: 3
+  maxBounces: 1
+  markDuration: 5

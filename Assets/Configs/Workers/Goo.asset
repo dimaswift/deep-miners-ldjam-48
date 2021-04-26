@@ -18,12 +18,10 @@ MonoBehaviour:
     m_SubObjectType: 
   displayName: Goo
   ability: 0
-  power: 0.05
+  power: 0.25
   frequency: 1
-  moveSpeed: 5
   size: 1
-  color: {r: 0.14833197, g: 1, b: 0, a: 1}
-  sizeLossPerHit: 0.5
-  radius: 3
-  maxBounces: 1
-  markDuration: 1
+  sizeLossPerHit: 0.3333
+  radius: 6
+  maxBounces: 10
+  markDuration: 3

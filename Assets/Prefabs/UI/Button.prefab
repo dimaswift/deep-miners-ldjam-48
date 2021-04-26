@@ -158,7 +158,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  volume: 0.5
+  volume: 0.1
   clickSound:
     m_AssetGUID: 2f200c57346e9b44aa9ee271b2390f90
     m_SubObjectName: 

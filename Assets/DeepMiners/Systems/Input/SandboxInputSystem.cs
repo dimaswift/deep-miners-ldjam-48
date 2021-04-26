@@ -63,14 +63,11 @@ namespace DeepMiners.Systems.Input
         
         public IEnumerable<int2> GetAvailableSizes()
         {
-            yield return new int2(8, 8);
             yield return new int2(16, 16);
             yield return new int2(32, 32);
             yield return new int2(64, 64);
             yield return new int2(128, 128);
             yield return new int2(256, 256);
-            yield return new int2(512, 512);
-            yield return new int2(1024, 1024);
         }
 
         public IEnumerable<WorkerConfig> GetAvailableWorkers()
